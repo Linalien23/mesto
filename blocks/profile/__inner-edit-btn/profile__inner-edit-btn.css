@@ -1,0 +1,25 @@
+.profile__inner-edit-btn {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../../images/Edit\ Button.svg');
+    object-fit: cover;
+    background-color: black;
+    border: none;
+    grid-area: edit;
+    align-self: center;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.profile__inner-edit-btn:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 540px) {
+    .profile__inner-edit-btn {
+        width: 18px;
+        height: 18px;
+        background-size: contain;
+        justify-self: start;
+    }
+}

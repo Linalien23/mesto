@@ -12,3 +12,9 @@
     border-bottom: 1px solid rgba(0,0,0,.2);
     cursor: pointer;
 }
+
+@media screen and (max-width: 540px) {
+    .popup__input {
+        width: 238px; 
+    }
+}

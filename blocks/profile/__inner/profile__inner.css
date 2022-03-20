@@ -1,3 +1,22 @@
 .profile__inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "name edit"
+    "description description";
+    max-width: 336px;
+    margin-left: 30px;
+    margin-top: 24px;
+    gap: 16px 18px;
+}
+
+@media screen and (max-width: 540px) {
+    .profile__inner {
+        margin: 28px auto 35px;
+        gap: 10px 0;
+        width: 282px;
+        align-items: center;
+        grid-template-columns: 1fr 38px;
+    }
 }

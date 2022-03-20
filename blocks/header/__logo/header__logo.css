@@ -1,5 +1,23 @@
 .header__logo {
     width: 142px;
     height: 33px;
-    margin-left: 2px;
+    padding-bottom: 38px;
+}
+
+@media screen and (max-width: 910px) {
+    .header__logo {
+        width: 133px;
+        height: 31px;
+        padding-bottom: 31px;
+        padding-left: 27px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .header__logo {
+        width: 104px;
+        height: 25px;
+        padding-bottom: 31px;
+        padding-left: 27px;
+    }
 }

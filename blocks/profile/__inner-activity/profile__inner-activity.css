@@ -1,0 +1,19 @@
+.profile__inner-activity {
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1;
+    color: white;
+    grid-area: description;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 336px;
+}
+
+@media screen and (max-width: 540px) {
+    .profile__inner-activity {
+        font-size: 14px;
+        text-align: center;
+    }
+}
