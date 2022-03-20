@@ -1,7 +1,7 @@
 .photo-grid__like-btn {
     display: block;
     position: absolute;
-    background: url(../../../images/Like.svg) no-repeat 50%/100%;;
+    background: url(../../../images/Like.svg) no-repeat 50%/100%;
     width: 22px;
     height: 19px;
     bottom: 30px;
