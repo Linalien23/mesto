@@ -12,3 +12,7 @@
     border: none;
     cursor: pointer;
 }
+
+.photo-grid__like-btn:hover {
+    opacity: 0.5;
+}

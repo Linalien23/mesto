@@ -6,3 +6,9 @@
     grid-auto-rows: 361px;
     grid-gap: 20px 17px;
 }
+
+@media screen and (max-width: 325px) {
+    .photo-grid {
+        margin: 36px auto 0;
+    }
+}
