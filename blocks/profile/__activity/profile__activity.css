@@ -1,0 +1,11 @@
+.profile__activity {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    justify-self: flex-end;
+    margin: 16px 0 9px 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 550px;
+}

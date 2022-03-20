@@ -3,35 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="./index.css">
   <title>Сервис Mesto</title>
 </head>
-<body>
-    <div class="page">
-        <header>
-            <img class="header__logo" src="('./images/header-logo.svg')" alt="Логотип Mesto">
+<body class="page">
+        <header class="header">
+            <img class="header__logo" src="./images/header-logo.svg" alt="Логотип Mesto">
         </header>
         <main class="content">
             <section class="profile">
-                <div class="profile__avatar">
-                    <img class="profile__image" src="('./images/avatar.jpg')" alt="Аватар профиля">
+                <div class="profile__inner">
+                    <img class="profile__avatar" src="./images/ava.jpg" alt="Аватар профиля">
+                    <div class="profile__description">
+                        <div class="profile__inner">
+                            <h1 class="profile__name">Красивская Алина</h1>
+                            <button class="profile__edit-btn" title="Редактировать профиль"></button>
+                        </div>
+                        <p class="profile__activity">Yandex QA Engineer</p>
+                    </div>
                 </div>
-                <div class="profile__description">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <button class="profile__btn profile__btn_action_edit shaded"
-                      title="Редактировать профиль">
-                    </button>
-                    <p class="profile__work">Исследователь океана</p>
-                  </div>
-          
-                  <button class="profile__btn profile__btn_action_add shaded"
+                  <button class="profile__add-btn"
                     title="Добавить фотографию">
                   </button>
             </section>
             <section class="photo-grid">
-                <ul class="photo-grid__list"></ul>
+              <div class="photo-grid__card">
+                <img src="./images/Gams.jpg" alt="Гамсутль" class="photo-grid__item">
+                <div>
+                  <h2 class="photo-grid__title">Гамсутль</h2>
+                  <button class="photo-grid__like-btn"></button>
+                </div>
+              </div>
+              <div class="photo-grid__card">
+                <img src="./images/Hun.jpg" alt="Водопад Тобол" class="photo-grid__item">
+                <div>
+                  <h2 class="photo-grid__title">Хунзах</h2>
+                  <button class="photo-grid__like-btn"></button>
+                </div>
+              </div>
+              <div class="photo-grid__card">
+                <div>
+                  <img src="./images/Sulack.jpg" alt="Сулакский каньон" class="photo-grid__item">
+                  <h2 class="photo-grid__title">Сулак</h2>
+                </div>
+                <button class="photo-grid__like-btn"></button>
+              </div>
+              <div class="photo-grid__card">
+                <img src="./images/Irganai.jpg" alt="Ирганайское водохранилище" class="photo-grid__item">
+                <h2 class="photo-grid__title">Ирганай</h2>
+                <button class="photo-grid__like-btn"></button>
+              </div>
+              <div class="photo-grid__card">
+                <img src="./images/Matlas.jpg" alt="Матласское плато" class="photo-grid__item">
+                <h2 class="photo-grid__title">Матлас</h2>
+                <button class="photo-grid__like-btn"></button>
+              </div>
+              <div class="photo-grid__card">
+                <img src="./images/Derbent.jpg" alt="Каспийское море" class="photo-grid__item">
+                <h2 class="photo-grid__title">Дербент</h2>
+                <button class="photo-grid__like-btn"></button>
+              </div>
             </section>
-            </main>
+            <footer class="footer">
+              <p class="footer__copyright">© 2022 Mesto Russia</p>
+            </footer>
         </main>
-    </div>
+
+        <section class="popup">
+            <div class="popup__container">
+              <h2 class="popup__title">Редактировать профиль</h2>
+              <form class="popup__form" name="popup-form-reduct" novalidate="">
+                <input class="popup__input popup__input-name" id="user-name" placeholder="Имя" name="name" required="" minlength="2" maxlength="40">
+                <input class="popup__input popup__input-job" id="user-caption" placeholder="О себе" name="caption" required="" minlength="2" maxlength="200">
+                <button class="popup__save-btn" type="submit">Cохранить</button>
+                <button class="popup__close-btn" type="button"></button>
+             </form>
+            </div>
+        </section>
+
+        <script src="./components/index.js"></script>
 </body>

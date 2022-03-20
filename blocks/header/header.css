@@ -1,0 +1,16 @@
+.header {
+    max-width: 880px;
+    margin: 0 auto;
+    padding-top: 45px;
+
+}
+
+.header:after {
+    content: " ";
+    display: block;
+    height: 0;
+    border: 1px solid #545454;
+    opacity: .7;
+    margin: 36px 0 0;
+    width: 100%;
+}
