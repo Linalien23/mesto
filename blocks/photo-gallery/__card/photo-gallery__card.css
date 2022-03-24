@@ -1,0 +1,10 @@
+.photo-gallery__card {
+    position:relative;
+    width: 282px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}

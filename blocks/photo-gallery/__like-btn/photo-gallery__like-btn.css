@@ -1,0 +1,16 @@
+.photo-gallery__like-btn {
+    width: 22px;
+    height: 19px;
+    justify-self: flex-end;
+    background-image: url('../../../Images/like_disabled.svg');
+    border: none;
+    background-color: white;
+    transition: 0.2s linear;
+    cursor: pointer;
+    margin-right: 20px;
+}
+}
+
+.photo-gallery__like-btn:hover {
+    opacity: 0.5;
+}

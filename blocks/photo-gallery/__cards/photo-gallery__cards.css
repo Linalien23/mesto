@@ -1,0 +1,22 @@
+.photo-gallery__cards {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 0;
+    list-style: none;
+}
+
+@media screen and (max-width: 910px) {
+    .photo-gallery__cards {
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .photo-gallery__cards {
+        gap: 20px 0;
+    }
+}
