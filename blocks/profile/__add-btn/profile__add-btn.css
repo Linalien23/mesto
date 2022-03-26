@@ -4,9 +4,10 @@
     margin-left: auto;
     background-color: transparent;
     padding: 0;
-    background-image: url('../../../images/Add\ Button1.svg');
+    background-image: url('../../../images/Add_Btn.svg');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 22px 22px;
     border: 2px white solid;
     border-radius: 2px;
     transition: 0.2s linear;
@@ -21,5 +22,6 @@
     .profile__add-btn {
         width: 282px;
         margin: auto;
+        background-size: 16px 16px;
     }
 }
