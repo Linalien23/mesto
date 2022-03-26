@@ -3,8 +3,8 @@ window.addEventListener('load', () => {
     const editButton = document.querySelector('.profile__inner-edit-btn');
     const closeButton = document.querySelector('.popup__close-btn');
     let formElement = document.querySelector('form');
-    let nameInput = document.querySelector('.popup__input-name');
-    let jobInput = document.querySelector('.popup__input-job');
+    let nameInput = document.querySelector('.popup__input_type_name');
+    let jobInput = document.querySelector('.popup__input_type_job');
     let nameValue = document.querySelector('.profile__inner-name');
     let jobValue  = document.querySelector('.profile__inner-activity');
 
