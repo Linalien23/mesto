@@ -4,7 +4,7 @@
     justify-self: flex-end;
     background-image: url('../../../Images/like_disabled.svg');
     border: none;
-    background-color: white;
+    background-color: transparent;
     transition: 0.2s linear;
     cursor: pointer;
     margin-right: 20px;
