@@ -1,87 +1,92 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./index.css">
-  <title>Сервис Mesto</title>
-</head>
-<body class="page">
-  
-        <header class="header">
-            <img class="header__logo" src="./images/header-logo.svg" alt="Логотип Mesto">
-        </header>
-        <main class="content">
 
-          <section class="profile">
-            <img class="profile__avatar" src="./images/ava.jpg" alt="Аватар профиля">
-            <div class="profile__inner">
-                <h1 class="profile__inner-name">Алина Красивская</h1>
-                <button class="profile__inner-edit-btn" type="button" aria-label="Редактировать"></button>
-                <p class="profile__inner-activity">Yandex QA Engineer</p>
-            </div>
-            <button class="profile__add-btn" type="button" aria-label="Добавить фотографию"></button>
-        </section>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Сервис Mesto</title>
+  </head>
 
-            <section class="photo-gallery">
-                <ul class="photo-gallery__cards">
+  <body class="page">
 
-                  <li class="photo-gallery__card">
-                      <img src="./images/Gams.jpg" alt="Гамсутль" class="photo-gallery__item">
-                      <h2 class="photo-gallery__title">Гамсутль</h2>
-                      <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
-                  </li>
+    <header class="header">
+      <img class="header__logo" src="./images/header-logo.svg" alt="Логотип Mesto">
+    </header>
+    <main class="content">
 
-                  <li class="photo-gallery__card">
-                      <img src="./images/Hun.jpg" alt="Водопад Тобол" class="photo-gallery__item">
-                      <h2 class="photo-gallery__title">Хунзах</h2>
-                      <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
-                  </li>
+      <section class="profile">
+        <img class="profile__avatar" src="./images/ava.jpg" alt="Аватар профиля">
+        <div class="profile__inner">
+          <h1 class="profile__inner-name">Алина Красивская</h1>
+          <button class="profile__inner-edit-btn" type="button" aria-label="Редактировать"></button>
+          <p class="profile__inner-activity">Yandex QA Engineer</p>
+        </div>
+        <button class="profile__add-btn" type="button" aria-label="Добавить фотографию"></button>
+      </section>
 
-                  <li class="photo-gallery__card">
-                      <img src="./images/Sulack.jpg" alt="Сулакский каньон" class="photo-gallery__item">
-                      <h2 class="photo-gallery__title">Сулак</h2>
-                      <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
-                  </li>
+      <section class="photo-gallery">
+        <ul class="photo-gallery__cards">
 
-                  <li class="photo-gallery__card">
-                    <img src="./images/Matlas.jpg" alt="Матласское плато" class="photo-gallery__item">
-                    <h2 class="photo-gallery__title">Матлас</h2>
-                    <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
-                  </li>
+          <li class="photo-gallery__card">
+            <img src="./images/Gams.jpg" alt="Гамсутль" class="photo-gallery__item">
+            <h2 class="photo-gallery__title">Гамсутль</h2>
+            <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
+          </li>
 
-                  <li class="photo-gallery__card">
-                      <img src="./images/Irganai.jpg" alt="Ирганайское водохранилище" class="photo-gallery__item">
-                      <h2 class="photo-gallery__title">Ирганай</h2>
-                      <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
-                  </li>
+          <li class="photo-gallery__card">
+            <img src="./images/Hun.jpg" alt="Водопад Тобол" class="photo-gallery__item">
+            <h2 class="photo-gallery__title">Хунзах</h2>
+            <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
+          </li>
 
-                  <li class="photo-gallery__card">
-                      <img src="./images/Derbent.jpg" alt="Каспийское море" class="photo-gallery__item">
-                      <h2 class="photo-gallery__title">Дербент</h2>
-                      <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
-                  </li>
+          <li class="photo-gallery__card">
+            <img src="./images/Sulack.jpg" alt="Сулакский каньон" class="photo-gallery__item">
+            <h2 class="photo-gallery__title">Сулак</h2>
+            <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
+          </li>
 
-                </ul>
-            </section>
-            
-            <footer class="footer">
-              <p class="footer__copyright">© 2022 Mesto Russia</p>
-            </footer>
-        </main>
+          <li class="photo-gallery__card">
+            <img src="./images/Matlas.jpg" alt="Матласское плато" class="photo-gallery__item">
+            <h2 class="photo-gallery__title">Матлас</h2>
+            <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
+          </li>
 
-        <section class="popup">
-            <div class="popup__container">
-              <h2 class="popup__title">Редактировать профиль</h2>
-              <form class="popup__form" name="popup-form-reduct" novalidate="">
-                <input class="popup__input popup__input-name" id="user-name" placeholder="Имя" name="name" required="" minlength="2" maxlength="40">
-                <input class="popup__input popup__input-job" id="user-caption" placeholder="О себе" name="caption" required="" minlength="2" maxlength="200">
-                <button class="popup__save-btn" type="submit">Cохранить</button>
-                <button class="popup__close-btn" type="button"></button>
-             </form>
-            </div>
-        </section>
+          <li class="photo-gallery__card">
+            <img src="./images/Irganai.jpg" alt="Ирганайское водохранилище" class="photo-gallery__item">
+            <h2 class="photo-gallery__title">Ирганай</h2>
+            <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
+          </li>
 
-        <script src="./components/index.js"></script>
-</body>
+          <li class="photo-gallery__card">
+            <img src="./images/Derbent.jpg" alt="Каспийское море" class="photo-gallery__item">
+            <h2 class="photo-gallery__title">Дербент</h2>
+            <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
+          </li>
+
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">© 2022 Mesto Russia</p>
+    </footer>
+
+    <section class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="popup-form-reduct" novalidate="">
+          <input class="popup__input popup__input-name" id="user-name" placeholder="Имя" name="name" required=""
+            minlength="2" maxlength="40">
+          <input class="popup__input popup__input-job" id="user-caption" placeholder="О себе" name="caption" required=""
+            minlength="2" maxlength="200">
+          <button class="popup__save-btn" type="submit">Cохранить</button>
+          <button class="popup__close-btn" type="button"></button>
+        </form>
+      </div>
+    </section>
+
+    <script src="./components/index.js"></script>
+  </body>
+
 </html>
