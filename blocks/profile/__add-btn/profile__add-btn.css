@@ -2,13 +2,12 @@
     width: 150px;
     height: 50px;
     margin-left: auto;
-    background-color: black;
+    background-color: transparent;
     padding: 0;
     background-image: url('../../../images/Add\ Button1.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 22px 22px;
-    border: 1px white solid;
+    border: 2px white solid;
     border-radius: 2px;
     transition: 0.2s linear;
     cursor: pointer;
