@@ -86,6 +86,20 @@
       </div>
     </section>
 
+    <section class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" name="popup-form-reduct" novalidate="">
+          <input class="popup__input popup__input_type_place" id="place-name" placeholder="Название" name="place" required=""
+            minlength="1" maxlength="40">
+          <input class="popup__input popup__input_type_url" id="place-url" placeholder="Ссылка на картинку" name="url" required=""
+            minlength="7">
+          <button class="popup__save-btn" type="submit">Cохранить</button>
+        </form>
+        <button class="popup__close-btn" type="button"></button>
+      </div>
+    </section>
+
     <script src="./components/index.js"></script>
   </body>
 
