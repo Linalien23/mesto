@@ -28,7 +28,7 @@
       <section class="photo-gallery">
         <ul class="photo-gallery__cards">
 
-          <li class="photo-gallery__card">
+          <!-- <li class="photo-gallery__card">
             <img src="./images/Gams.jpg" alt="Гамсутль" class="photo-gallery__item">
             <h2 class="photo-gallery__title">Гамсутль</h2>
             <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
@@ -62,7 +62,7 @@
             <img src="./images/Derbent.jpg" alt="Каспийское море" class="photo-gallery__item">
             <h2 class="photo-gallery__title">Дербент</h2>
             <button class="photo-gallery__like-btn" aria-label="Лайк" type="button"></button>
-          </li>
+          </li> -->
 
         </ul>
       </section>
@@ -99,6 +99,15 @@
         <button class="popup__close-btn" type="button"></button>
       </div>
     </section>
+
+    <template id="cards">
+      <li class="photo-gallery__card">
+        <img class="photo-gallery__item">
+        <h2 class="photo-gallery__title"></h2>
+        <button class="photo-gallery__like-btn" type="button" aria-label="Лайк"></button>
+        <button class="photo-gallery__delete-btn" type="button" aria-label="Корзина"></button>
+      </li>
+    </template>
 
     <script src="./components/index.js"></script>
   </body>
