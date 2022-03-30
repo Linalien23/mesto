@@ -99,5 +99,3 @@ window.addEventListener('load', () => {
     closeAddButton.addEventListener('click', closeAddPopup);
 
 });
-
-
