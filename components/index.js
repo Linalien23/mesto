@@ -1,5 +1,4 @@
 window.addEventListener('load', () => {
-    const formElement = document.querySelector('form');
     const nameValue = document.querySelector('.profile__inner-name');
     const jobValue  = document.querySelector('.profile__inner-activity');
 
@@ -11,10 +10,15 @@ window.addEventListener('load', () => {
     const editPopup = document.querySelector('.edit__popup');
     const addPopup = document.querySelector('.add__popup');
 
+    //формы
+    const formElement = document.querySelector('form');
+    const editForm = document.querySelector('edit__form');
+    const addForm = document.querySelector('add__form');
+
     //инпуты
     const nameInput = document.querySelector('.popup__input_type_name');
     const jobInput = document.querySelector('.popup__input_type_job');
-    const placeInput = document.querySelector('.popup__input_type_place');
+    const placeNameInput = document.querySelector('.popup__input_type_place');
     const urlInput = document.querySelector('.popup__input_type_url');
 
     //закрывающие крестики
@@ -49,13 +53,13 @@ window.addEventListener('load', () => {
         }
       ]; 
 
-    //загрузка карточек на страницу
+    //отображение карточек при загрузке страницы
     const photoGalleryCards = document.querySelector('.photo-gallery__cards');
 
     const templateCards = document.querySelector('#cards').content;
 
     placeCards.forEach(function (item) {
-        photoGalleryCard = templateCards.querySelector('.photo-gallery__card').cloneNode(true);;
+        photoGalleryCard = templateCards.querySelector('.photo-gallery__card').cloneNode(true);
 
         photoGalleryCard.querySelector('.photo-gallery__item').src = item.link;
         photoGalleryCard.querySelector('.photo-gallery__title').textContent = item.name;
@@ -66,13 +70,29 @@ window.addEventListener('load', () => {
         });
 
         //корзина
-        
-
 
 
         photoGalleryCards.append(photoGalleryCard);
-    })
+    });
 
+    //добавление карточки
+    function addCard (evt) {
+        evt.preventDefault();
+
+        photoGalleryCard = templateCards.querySelector('.photo-gallery__card').cloneNode(true);
+
+        photoGalleryCard.querySelector('.photo-gallery__title').textContent = placeNameInput.value;
+        photoGalleryCard.querySelector('.photo-gallery__item').src = urlInput.value;
+        
+        photoGalleryCards.prepend(photoGalleryCard);
+
+        closePopup ()
+        addForm.reset();
+    }
+
+    formElement.addEventListener('submit', addCard);
+
+    //открытие попапа редактирования профиля
     function openEditPopup() {
         editPopup.classList.add('popup_opened');
         nameInput.value = nameValue.textContent;
