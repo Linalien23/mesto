@@ -10,3 +10,7 @@
     cursor: pointer;
     border: none;
 }
+
+.photo-gallery__delete-btn:hover {
+    opacity: 0.6;
+}
