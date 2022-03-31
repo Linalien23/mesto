@@ -1,8 +1,10 @@
 window.addEventListener('load', () => {
-    const editButton = document.querySelector('.profile__inner-edit-btn');
     const formElement = document.querySelector('form');
     const nameValue = document.querySelector('.profile__inner-name');
     const jobValue  = document.querySelector('.profile__inner-activity');
+
+    //кнопки
+    const editButton = document.querySelector('.profile__inner-edit-btn');
     const addButton = document.querySelector('.profile__add-btn');
 
     //попапы
@@ -57,10 +59,19 @@ window.addEventListener('load', () => {
 
         photoGalleryCard.querySelector('.photo-gallery__item').src = item.link;
         photoGalleryCard.querySelector('.photo-gallery__title').textContent = item.name;
+
+        //кнопка лайка
+        photoGalleryCard.querySelector('.photo-gallery__like-btn').addEventListener('click', function (evt) {
+            evt.target.classList.toggle('photo-gallery__like-btn_active');
+        });
+
+        //корзина
+        
+
+
+
         photoGalleryCards.append(photoGalleryCard);
     })
-
-
 
     function openEditPopup() {
         editPopup.classList.add('popup_opened');
