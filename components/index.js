@@ -1,3 +1,5 @@
+const formElement = document.querySelector('form');
+
 const nameValue = document.querySelector('.profile__inner-name');
 const jobValue = document.querySelector('.profile__inner-activity');
 
@@ -8,11 +10,13 @@ const addButton = document.querySelector('.profile__add-btn');
 //попапы
 const editPopup = document.querySelector('.edit__popup');
 const addPopup = document.querySelector('.add__popup');
+const zoomPopup = document.querySelector('.zoom-popup');
 
-//формы
-const formElement = document.querySelector('form');
+//содержимое попапов
 const editForm = document.querySelector('.edit__form');
 const addForm = document.querySelector('.add__form');
+const zoomPopupCard = document.querySelector('.zoom-popup__item');
+const zoomPopupCardTitle = document.querySelector('.zoom-popup__title');
 
 //инпуты
 const nameInput = document.querySelector('.popup__input_type_name');
@@ -23,6 +27,7 @@ const urlInput = document.querySelector('.popup__input_type_url');
 //закрывающие крестики
 const closeEditButton = editPopup.querySelector('.popup__close-btn');
 const closeAddButton = addPopup.querySelector('.popup__close-btn');
+const zoomCloseButton = document.querySelector('.zoom-popup__close-btn');
 
 //массив карточек
 const placeCards = [ //добавляем эти карточки при загрузке страницы
@@ -52,27 +57,33 @@ const placeCards = [ //добавляем эти карточки при заг�
   }
 ];
 
+function openPopup(popup) { //общая функция открытия попапа
+  popup.classList.add('popup_opened'); //добавляю попапу новый класс
+}
+
+function closePopup(popup) { //общая функция закрытия попапа
+  popup.classList.remove('popup_opened'); //удаляю ранее добавленный класс
+}
+
 //РЕДАКТИРОВАНИЕ ПРОФИЛЯ
-function openEditPopup() { //функция открытия попапа РЕДАКТИРОВАНИЯ ПРОФИЛЯ
-  editPopup.classList.add('popup_opened'); //добавляю попапу РЕДАКТИРОВАНИЯ ПРОФИЛЯ новый класс
+function editProfile() { //функция РЕДАКТИРОВАНИЯ ПРОФИЛЯ
   nameInput.value = nameValue.textContent; //заполняю поле "имя" значением из профиля
   jobInput.value = jobValue.textContent; //заполняю поле "о себе" значением из профиля
+  openPopup(editPopup); //вызываю функцию открытия попапа
 }
 
-function closeEditPopup() { //функция закрытия попапа
-  editPopup.classList.remove('popup_opened'); //удаляю у попапа ранее добавленный класс
-}
+editButton.addEventListener('click', editProfile); //открыть попап по клику на кнопку редактирования профиля (вызов функции редактирования)
 
-editButton.addEventListener('click', openEditPopup); //открыть попап по клику на кнопку редактирования профиля
-
-closeEditButton.addEventListener('click', closeEditPopup); //закрыть попап по клику на крестик
+closeEditButton.addEventListener('click', function () { //закрыть попап по клику на крестик
+  closePopup(editPopup);
+});
 
 function formSubmitHandler(evt) { //отправить форму и добавить её содержимое на страницу
   evt.preventDefault(); //запретить выполнение события по умолчанию, чтобы при отправении формы страница не перезагружалась
 
   nameValue.textContent = nameInput.value; //заменяю имя в профиле на введённое в форме
   jobValue.textContent = jobInput.value; //заменяю "о себе" в профиле на введённое в форме
-  closeEditPopup(); //вызываю функцию закрытия попапа при клике на "Сохранить"
+  closePopup(editPopup); //вызываю функцию закрытия попапа при клике на "Сохранить"
 }
 
 formElement.addEventListener('submit', formSubmitHandler); //отправить форму и добавить её содержимое на страницу
@@ -94,6 +105,15 @@ const createPlaceCards = function (photoCard) { //функция загрузк�
   photoGalleryCard.querySelector('.photo-gallery__delete-btn').addEventListener('click', () => { // удаление публикации
     photoGalleryCard.remove();
   });
+
+  // photoGalleryCard.querySelector('.elements__card-zoom-button').addEventListener ('click', function (){ //
+  //   zoomPopupCard.src = photoCard.link;
+  //   zoomPopupCard.alt = photoCard.link;
+  //   zoomPopupCardTitle.textContent = photoCard.name;
+  //   openPopup (zoomPopup);
+  // });
+
+
 
   return photoGalleryCard;
 };
