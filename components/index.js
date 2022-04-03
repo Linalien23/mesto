@@ -102,16 +102,16 @@ const createPlaceCards = function (photoCard) { //функция загрузк�
     evt.target.classList.toggle('photo-gallery__like-btn_active'); //лайк
   });
 
-  photoGalleryCard.querySelector('.photo-gallery__delete-btn').addEventListener('click', () => { // удаление публикации
+  photoGalleryCard.querySelector('.photo-gallery__delete-btn').addEventListener('click', () => { //удаление публикации
     photoGalleryCard.remove();
   });
 
-  // photoGalleryCard.querySelector('.elements__card-zoom-button').addEventListener ('click', function (){ //
-  //   zoomPopupCard.src = photoCard.link;
-  //   zoomPopupCard.alt = photoCard.link;
-  //   zoomPopupCardTitle.textContent = photoCard.name;
-  //   openPopup (zoomPopup);
-  // });
+  photoGalleryCard.querySelector('.photo-gallery__zoom-btn').addEventListener ('click', function (){ //зум-попап
+    zoomPopupCard.src = photoCard.link;
+    zoomPopupCard.alt = photoCard.link;
+    zoomPopupCardTitle.textContent = photoCard.name;
+    openPopup (zoomPopup);
+  });
 
 
 
