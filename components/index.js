@@ -102,32 +102,33 @@ const createPlaceCards = function (photoCard) { //функция загрузк�
     evt.target.classList.toggle('photo-gallery__like-btn_active'); //лайк
   });
 
-  photoGalleryCard.querySelector('.photo-gallery__delete-btn').addEventListener('click', () => { //удаление публикации
+  photoGalleryCard.querySelector('.photo-gallery__delete-btn').addEventListener('click', function () { //удаление публикации
     photoGalleryCard.remove();
   });
 
-  photoGalleryCard.querySelector('.photo-gallery__zoom-btn').addEventListener ('click', function (){ //зум-попап
+  photoGalleryCard.querySelector('.photo-gallery__zoom-btn').addEventListener('click', function () { //зум-попап
     zoomPopupCard.src = photoCard.link;
     zoomPopupCard.alt = photoCard.link;
     zoomPopupCardTitle.textContent = photoCard.name;
-    openPopup (zoomPopup);
+    openPopup(zoomPopup);
   });
 
-
+  zoomCloseButton.addEventListener('click', function () { //закрываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по крестику
+    closePopup(zoomPopup);
+  });
 
   return photoGalleryCard;
 };
 
 //ДОБАВЛЕНИЕ КАРТОЧКИ
-function openAddPopup() { //функция открытия попапа ДОБАВЛЕНИЯ КАРТОЧКИ
-  addPopup.classList.add('popup_opened');
-}
-addButton.addEventListener('click', openAddPopup); //открываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по кнопке
 
-function closeAddPopup() { //функция закрытия попапа ДОБАВЛЕНИЯ КАРТОЧКИ
-  addPopup.classList.remove('popup_opened');
-}
-closeAddButton.addEventListener('click', closeAddPopup); //закрываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по крестику
+addButton.addEventListener('click', function () { //открываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по кнопке
+  openPopup(addPopup); 
+});
+
+closeAddButton.addEventListener('click', function () { //закрываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по крестику
+  closePopup(addPopup);
+});
 
 const photoGalleryCards = document.querySelector('.photo-gallery__cards'); //тут все карточки
 
@@ -142,7 +143,9 @@ function addCard(evt) { //функция добавления публикаци
   photoCard.name = placeNameInput.value; //берём имя карточки из значения поля в форме добавлени карточки
   photoCard.link = urlInput.value; //ссылка на  карточку из поля
   comeFirstCard(photoCard); //вызываю функцию расположения новой карточки на первом месте
-  closeAddPopup() //вызываю функцию закрытия попапа при клике на "Сохранить"
+  closePopup(addPopup)() //вызываю функцию закрытия попапа при клике на "Сохранить"
+  placeNameInput.value = ''; //сбрасываю значения в полях формы
+  urlInput.value = '';
 }
 
 formElement.addEventListener('submit', addCard); //вызываю функцию добавления карточки 
