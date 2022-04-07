@@ -9,8 +9,8 @@ const editButton = document.querySelector('.profile__inner-edit-btn');
 const addButton = document.querySelector('.profile__add-btn');
 
 //попапы
-const editPopup = document.querySelector('.edit__popup');
-const addPopup = document.querySelector('.add__popup');
+const editPopup = document.querySelector('.edit-popup');
+const addPopup = document.querySelector('.add-popup');
 const zoomPopup = document.querySelector('.zoom-popup');
 
 //содержимое попапов
