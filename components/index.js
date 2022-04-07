@@ -1,4 +1,3 @@
-// const formElement = document.querySelector('form');
 const formElementAdd = document.querySelector('.add-popup__form');
 const formElementEdit = document.querySelector('.edit-popup__form');
 
@@ -133,7 +132,7 @@ closeAddButton.addEventListener('click', function () { //закрываю поп
 const photoGalleryCards = document.querySelector('.photo-gallery__cards'); //тут все карточки
 
 const comeFirstCard = function (photoCard) { //функция расположения новой карточки на первом месте
-  photoGalleryCards.prepend(createCard(photoCard));
+  photoGalleryCards.prepend(createPlaceCards(photoCard));
 }
 
 const addCard = function (evt) { //функция добавления публикации
@@ -148,7 +147,7 @@ const addCard = function (evt) { //функция добавления публ�
   urlInput.value = '';
 }
 
-formElementEdit.addEventListener('submit', addCard); //вызываю функцию добавления карточки 
+formElementAdd.addEventListener('submit', addCard); //вызываю функцию добавления карточки по клику на "Сохранить"
 
 const newPlaceCards = placeCards.map(function (photoCard) { //новый массив из объявленного ранее массива карточек
   return createPlaceCards(photoCard);
