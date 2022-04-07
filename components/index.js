@@ -1,4 +1,6 @@
-const formElement = document.querySelector('form');
+// const formElement = document.querySelector('form');
+const formElementAdd = document.querySelector('.add-popup__form');
+const formElementEdit = document.querySelector('.edit-popup__form');
 
 const nameValue = document.querySelector('.profile__inner-name');
 const jobValue = document.querySelector('.profile__inner-activity');
@@ -13,8 +15,6 @@ const addPopup = document.querySelector('.add__popup');
 const zoomPopup = document.querySelector('.zoom-popup');
 
 //содержимое попапов
-const editForm = document.querySelector('.edit__form');
-const addForm = document.querySelector('.add__form');
 const zoomPopupCard = document.querySelector('.zoom-popup__item');
 const zoomPopupCardTitle = document.querySelector('.zoom-popup__title');
 
@@ -86,7 +86,7 @@ function formSubmitHandler(evt) { //отправить форму и добав�
   closePopup(editPopup); //вызываю функцию закрытия попапа при клике на "Сохранить"
 }
 
-formElement.addEventListener('submit', formSubmitHandler); //отправить форму и добавить её содержимое на страницу
+formElementEdit.addEventListener('submit', formSubmitHandler); //отправить форму и добавить её содержимое на страницу
 
 //ЗАГРУЗКА КАРТОЧЕК
 
@@ -136,19 +136,19 @@ const comeFirstCard = function (photoCard) { //функция расположе
   photoGalleryCards.prepend(createCard(photoCard));
 }
 
-function addCard(evt) { //функция добавления публикации
+const addCard = function (evt) { //функция добавления публикации
   evt.preventDefault(); //запретить выполнение события по умолчанию, чтобы при отправении формы страница не перезагружалась
 
   const photoCard = {}; //объект "фотокарточка"
   photoCard.name = placeNameInput.value; //берём имя карточки из значения поля в форме добавлени карточки
   photoCard.link = urlInput.value; //ссылка на  карточку из поля
   comeFirstCard(photoCard); //вызываю функцию расположения новой карточки на первом месте
-  closePopup(addPopup)() //вызываю функцию закрытия попапа при клике на "Сохранить"
+  closePopup(addPopup); //вызываю функцию закрытия попапа при клике на "Сохранить"
   placeNameInput.value = ''; //сбрасываю значения в полях формы
   urlInput.value = '';
 }
 
-formElement.addEventListener('submit', addCard); //вызываю функцию добавления карточки 
+formElementEdit.addEventListener('submit', addCard); //вызываю функцию добавления карточки 
 
 const newPlaceCards = placeCards.map(function (photoCard) { //новый массив из объявленного ранее массива карточек
   return createPlaceCards(photoCard);
