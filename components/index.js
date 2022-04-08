@@ -26,7 +26,7 @@ const urlInput = document.querySelector('.popup__input_type_url');
 //закрывающие крестики
 const closeEditButton = editPopup.querySelector('.popup__close-btn');
 const closeAddButton = addPopup.querySelector('.popup__close-btn');
-const zoomCloseButton = document.querySelector('.zoom-popup__close-btn');
+const zoomCloseButton = zoomPopup.querySelector('.zoom-popup__close-btn');
 
 //массив карточек
 const placeCards = [ //добавляем эти карточки при загрузке страницы
