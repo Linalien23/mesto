@@ -55,8 +55,6 @@ function formSubmitHandler(evt) { //отправить форму и добав�
   closePopup(popupEdit); //вызываю функцию закрытия попапа при клике на "Сохранить"
 }
 
-formElementEdit.addEventListener('submit', formSubmitHandler); //отправить форму и добавить её содержимое на страницу
-
 //ЗАГРУЗКА КАРТОЧЕК
 
 const createPlaceCards = function (photoCard) { //функция загрузки карточек на страницу
@@ -107,12 +105,14 @@ const newPlaceCards = placeCards.map(function (photoCard) { //новый мас�
 });
 photoGalleryCards.append(...newPlaceCards); //добавляю новый массив карточек в список
 
-//обработчики событий
+//слушатели событий
 buttonEdit.addEventListener('click', handleEditProfile); //открыть попап по клику на кнопку редактирования профиля (вызов функции редактирования)
 
 buttonEditClose.addEventListener('click', function () { //закрыть попап по клику на крестик
   closePopup(popupEdit);
 });
+
+formElementEdit.addEventListener('submit', formSubmitHandler); //отправить форму и добавить её содержимое на страницу
 
 buttonAdd.addEventListener('click', function () { //открываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по кнопке
   openPopup(popupAdd); 
@@ -122,7 +122,7 @@ buttonAddClose.addEventListener('click', function () { //закрываю поп
   closePopup(popupAdd);
 });
 
-buttonZoomClose.addEventListener('click', function () { //закрываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по крестику
+buttonZoomClose.addEventListener('click', function () { //закрываю zoom-попап кликом по крестику
   closePopup(popupZoom);
 });
 
