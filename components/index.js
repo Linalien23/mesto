@@ -32,12 +32,21 @@ const buttonEditClose = popupEdit.querySelector('.popup__close-btn');
 const buttonAddClose = popupAdd.querySelector('.popup__close-btn');
 const buttonZoomClose = popupZoom.querySelector('.zoom-popup__close-btn');
 
+const closeWithEsc = (evt) => { //функция закрытия попапа по кнопке esc
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened); //вызов функции закрытия попапа
+  }
+}
+
 function openPopup(popup) { //общая функция открытия попапа
   popup.classList.add('popup_opened'); //добавляю попапу новый класс
+  document.addEventListener ('keyup', closeWithEsc); //
 }
 
 function closePopup(popup) { //общая функция закрытия попапа
   popup.classList.remove('popup_opened'); //удаляю ранее добавленный класс
+  document.removeEventListener ('keyup', closeWithEsc);
 }
 
 //РЕДАКТИРОВАНИЕ ПРОФИЛЯ
