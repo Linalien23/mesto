@@ -32,8 +32,8 @@ const buttonEditClose = popupEdit.querySelector('.popup__close-btn');
 const buttonAddClose = popupAdd.querySelector('.popup__close-btn');
 const buttonZoomClose = popupZoom.querySelector('.zoom-popup__close-btn');
 
-const closeWithEsc = (evt) => { //функция закрытия попапа по кнопке esc
-  if (evt.key === 'Escape') {
+const closeWithEsc = (evt) => { //функция закрытия попапа по кнопке Escape
+  if (evt.key === 'Escape') { //если пользователь нажал Escape
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened); //вызов функции закрытия попапа
   }
@@ -41,12 +41,18 @@ const closeWithEsc = (evt) => { //функция закрытия попапа �
 
 function openPopup(popup) { //общая функция открытия попапа
   popup.classList.add('popup_opened'); //добавляю попапу новый класс
-  document.addEventListener ('keyup', closeWithEsc); //
+  document.addEventListener ('keyup', closeWithEsc); //добавляю обработчик нажатия, когда попап открыт
 }
 
 function closePopup(popup) { //общая функция закрытия попапа
   popup.classList.remove('popup_opened'); //удаляю ранее добавленный класс
-  document.removeEventListener ('keyup', closeWithEsc);
+  document.removeEventListener ('keyup', closeWithEsc);//удаляю обработчик нажатия, когда попап закрыт
+}
+
+function closePopupOverlayClick (evt) { //функция закрытия попапа по клику на оверлей
+  if (evt.target.classList.contains('popup_opened')) { //если нажали на элемент с классом popup_opened (то есть оверлей)
+    closePopup(evt.target); //то вызови функцию закрытия попапа
+  }
 }
 
 //РЕДАКТИРОВАНИЕ ПРОФИЛЯ
@@ -114,7 +120,12 @@ const newPlaceCards = placeCards.map(function (photoCard) { //новый мас�
 });
 photoGalleryCards.append(...newPlaceCards); //добавляю новый массив карточек в список
 
-//слушатели событий
+//ОБРАБОТЧИКИ СОБЫТИЙ
+
+popupEdit.addEventListener('click', closePopupOverlayClick);
+popupAdd.addEventListener('click', closePopupOverlayClick);
+popupZoom.addEventListener('click', closePopupOverlayClick);
+
 buttonEdit.addEventListener('click', handleEditProfile); //открыть попап по клику на кнопку редактирования профиля (вызов функции редактирования)
 
 buttonEditClose.addEventListener('click', function () { //закрыть попап по клику на крестик
