@@ -6,6 +6,6 @@
     cursor: default;
 }
 
-.popup__submit-btn_inactive {
+.popup__submit-btn_inactive:hover {
     opacity: 20%;
 }
