@@ -17,7 +17,12 @@
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
-@import url(../blocks/popup/__save-btn/popup__save-btn.css);
+@import url(../blocks/popup/__input/_error/popup__input_error.css);
+@import url(../blocks/popup/__input/_texterror/popup__input_texterror.css);
+@import url(../blocks/popup/__input/_texterror/_top/popup__input_texterror_top.css);
+@import url(../blocks/popup/__input/_texterror/_bottom/popup__input_texterror_bottom.css);
+@import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
+@import url(../blocks/popup/__submit-btn/_inactive/popup__submit-btn_inactive.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);
 @import url(../blocks/photo-gallery/photo-gallery.css);
 @import url(../blocks/photo-gallery/__cards/photo-gallery__cards.css);

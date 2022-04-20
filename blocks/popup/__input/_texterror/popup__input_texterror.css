@@ -1,0 +1,7 @@
+.popup__input_texterror {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #FF0000;
+    position: absolute;
+}

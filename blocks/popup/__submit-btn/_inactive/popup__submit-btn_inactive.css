@@ -1,0 +1,11 @@
+.popup__submit-btn_inactive {
+    border: 1px solid black;
+    background-color: transparent;
+    color: black;
+    opacity: 20%;
+    cursor: default;
+}
+
+.popup__submit-btn_inactive {
+    opacity: 20%;
+}
