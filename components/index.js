@@ -62,7 +62,7 @@ function handleEditProfile() { //функция РЕДАКТИРОВАНИЯ П�
   openPopup(popupEdit); //вызываю функцию открытия попапа
 }
 
-function formSubmitHandler(evt) { //отправить форму и добавить её содержимое на страницу
+function handleProfileFormSubmit (evt) { //отправить форму и добавить её содержимое на страницу
   evt.preventDefault(); //запретить выполнение события по умолчанию, чтобы при отправении формы страница не перезагружалась
 
   nameValue.textContent = nameInput.value; //заменяю имя в профиле на введённое в форме
@@ -89,7 +89,7 @@ const createPlaceCards = function (photoCard) { //функция загрузк�
 
   photoGalleryCard.querySelector('.photo-gallery__zoom-btn').addEventListener('click', function () { //зум-попап
     zoomPopupCard.src = photoCard.link;
-    zoomPopupCard.alt = photoCard.link;
+    zoomPopupCard.alt = photoCard.name;
     zoomPopupCardTitle.textContent = photoCard.name;
     openPopup(popupZoom);
   });
@@ -111,8 +111,7 @@ const handleAddCard = function (evt) { //функция добавления п�
   photoCard.link = urlInput.value; //ссылка на  карточку из поля
   comeFirstCard(photoCard); //вызываю функцию расположения новой карточки на первом месте
   closePopup(popupAdd); //вызываю функцию закрытия попапа при клике на "Сохранить"
-  placeNameInput.value = ''; //сбрасываю значения в полях формы
-  urlInput.value = '';
+  formElementAdd.reset(); //сбрасываю значения в полях формы
 }
 
 const newPlaceCards = placeCards.map(function (photoCard) { //новый массив из объявленного ранее массива карточек (массив в отдельном модуле)
@@ -132,7 +131,7 @@ buttonEditClose.addEventListener('click', function () { //закрыть поп�
   closePopup(popupEdit);
 });
 
-formElementEdit.addEventListener('submit', formSubmitHandler); //отправить форму и добавить её содержимое на страницу
+formElementEdit.addEventListener('submit', handleProfileFormSubmit ); //отправить форму и добавить её содержимое на страницу
 
 buttonAdd.addEventListener('click', function () { //открываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по кнопке
   openPopup(popupAdd); 

@@ -67,9 +67,6 @@ const setEventListeners = (formElement, obj) => {
 const enableValidation = (obj) => {
   const formList = Array.from(document.querySelectorAll(obj.formSelector)); // найдём все формы с указанным классом в DOM, сделаем из них массив методом Array.from
   formList.forEach((formElement) => { // переберём полученную коллекцию
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault(); // у каждой формы отменим стандартное поведение
-    });
     setEventListeners(formElement, obj); // для каждой формы вызовем функцию setEventListeners, передав ей элемент формы
   });
 }
