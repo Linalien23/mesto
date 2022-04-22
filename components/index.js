@@ -11,6 +11,11 @@ const jobValue = document.querySelector('.profile__inner-activity');
 //кнопки
 const buttonEdit = document.querySelector('.profile__inner-edit-btn');
 const buttonAdd = document.querySelector('.profile__add-btn');
+const buttonAddSubmit = document.querySelector('.add-popup__submit-btn');
+const buttonEditSubmit = document.querySelector ('.edit-popup__submit-btn');
+const formElementList = {
+  inactiveButtonClass: 'popup__submit-btn_inactive',
+};
 
 //попапы
 const popupEdit = document.querySelector('.edit-popup');
@@ -59,6 +64,7 @@ function closePopupOverlayClick (evt) { //функция закрытия поп
 function handleEditProfile() { //функция РЕДАКТИРОВАНИЯ ПРОФИЛЯ
   nameInput.value = nameValue.textContent; //заполняю поле "имя" значением из профиля
   jobInput.value = jobValue.textContent; //заполняю поле "о себе" значением из профиля
+  activeButtonElement(buttonEditSubmit, formElementList); // функция активации кнопки (из файла с кодом для валидации)
   openPopup(popupEdit); //вызываю функцию открытия попапа
 }
 
@@ -134,6 +140,7 @@ buttonEditClose.addEventListener('click', function () { //закрыть поп�
 formElementEdit.addEventListener('submit', handleProfileFormSubmit ); //отправить форму и добавить её содержимое на страницу
 
 buttonAdd.addEventListener('click', function () { //открываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по кнопке
+  disableButtonElement( buttonAddSubmit, formElementList); //дизейблю кнопку, чтоб нельзя было добавить пустую карточку
   openPopup(popupAdd); 
 });
 
