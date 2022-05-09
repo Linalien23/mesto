@@ -1,3 +1,7 @@
+import { FormValidator } from './validate.js';
+import { Card } from './cards.js';
+
+
 const templateCards = document.querySelector('#cards').content;
 const photoGalleryCards = document.querySelector('.photo-gallery__cards'); //тут все карточки
 
@@ -36,6 +40,34 @@ const urlInput = popupAdd.querySelector('.popup__input_type_url');
 const buttonEditClose = popupEdit.querySelector('.popup__close-btn');
 const buttonAddClose = popupAdd.querySelector('.popup__close-btn');
 const buttonZoomClose = popupZoom.querySelector('.zoom-popup__close-btn');
+
+//массив карточек
+const placeCards = [ //добавляем эти карточки при загрузке страницы
+  {
+    name: 'Гамсутль',
+    link: './images/Gams.jpg'
+  },
+  {
+    name: 'Хунзах',
+    link: './images/Hun.jpg'
+  },
+  {
+    name: 'Сулак',
+    link: './images/Sulack.jpg'
+  },
+  {
+    name: 'Матлас',
+    link: './images/Matlas.jpg'
+  },
+  {
+    name: 'Ирганай',
+    link: './images/Irganai.jpg'
+  },
+  {
+    name: 'Дербент',
+    link: './images/Derbent.jpg'
+  }
+];
 
 const closeWithEsc = (evt) => { //функция закрытия попапа по кнопке Escape
   if (evt.key === 'Escape') { //если пользователь нажал Escape
