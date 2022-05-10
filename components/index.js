@@ -70,6 +70,7 @@ const placeCards = [ //добавляем эти карточки при заг�
 
 const photoGalleryCards = document.querySelector('.photo-gallery__cards'); // тут все карточки
 
+// НОВЫЙ КОД ЗАГРУЗКИ И ДОБАВЛЕНИЯ КАРТОЧЕК
 const createNewCard = function creatNewCard (data) { // Функция создания карточки
   const card = new Card (data.name, data.link, '#cards');
   const cardElement = card.generateCard();
@@ -146,6 +147,36 @@ function handleProfileFormSubmit (evt) { //отправить форму и до
   closePopup(popupEdit); //вызываю функцию закрытия попапа при клике на "Сохранить"
 };
 
+//ОБРАБОТЧИКИ СОБЫТИЙ
+popupEdit.addEventListener('click', closePopupOverlayClick);
+popupAdd.addEventListener('click', closePopupOverlayClick);
+popupZoom.addEventListener('click', closePopupOverlayClick);
+
+buttonEdit.addEventListener('click', handleEditProfile); //открыть попап по клику на кнопку редактирования профиля (вызов функции редактирования)
+
+buttonEditClose.addEventListener('click', function () { //закрыть попап по клику на крестик
+  closePopup(popupEdit);
+});
+
+formElementEdit.addEventListener('submit', handleProfileFormSubmit ); //отправить форму и добавить её содержимое на страницу
+
+buttonAdd.addEventListener('click', function () { //открываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по кнопке
+  addProfileValidate.toggleButtonState(); // Функция из файла валидации
+  openPopup(popupAdd); 
+});
+
+buttonAddClose.addEventListener('click', function () { //закрываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по крестику
+  closePopup(popupAdd);
+});
+
+buttonZoomClose.addEventListener('click', function () { //закрываю zoom-попап кликом по крестику
+  closePopup(popupZoom);
+});
+
+formElementAdd.addEventListener('submit', handleAddCard); //вызываю функцию добавления карточки по клику на "Сохранить"
+
+
+// СТАРЫЙ КОД
 //ЗАГРУЗКА КАРТОЧЕК ПЕРЕЕХАЛА В ОТДЕЛЬНЫЙ ФАЙЛ С КЛАССОМ CARD
 
 // const createPlaceCards = function (photoCard) { //функция загрузки карточек на страницу
@@ -194,32 +225,3 @@ function handleProfileFormSubmit (evt) { //отправить форму и до
 //   return createPlaceCards(photoCard);
 // });
 // photoGalleryCards.append(...newPlaceCards); //добавляю новый массив карточек в список
-
-//ОБРАБОТЧИКИ СОБЫТИЙ
-
-popupEdit.addEventListener('click', closePopupOverlayClick);
-popupAdd.addEventListener('click', closePopupOverlayClick);
-popupZoom.addEventListener('click', closePopupOverlayClick);
-
-buttonEdit.addEventListener('click', handleEditProfile); //открыть попап по клику на кнопку редактирования профиля (вызов функции редактирования)
-
-buttonEditClose.addEventListener('click', function () { //закрыть попап по клику на крестик
-  closePopup(popupEdit);
-});
-
-formElementEdit.addEventListener('submit', handleProfileFormSubmit ); //отправить форму и добавить её содержимое на страницу
-
-buttonAdd.addEventListener('click', function () { //открываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по кнопке
-  addProfileValidate.toggleButtonState(); // Функция из файла валидации
-  openPopup(popupAdd); 
-});
-
-buttonAddClose.addEventListener('click', function () { //закрываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по крестику
-  closePopup(popupAdd);
-});
-
-buttonZoomClose.addEventListener('click', function () { //закрываю zoom-попап кликом по крестику
-  closePopup(popupZoom);
-});
-
-formElementAdd.addEventListener('submit', handleAddCard); //вызываю функцию добавления карточки по клику на "Сохранить"
