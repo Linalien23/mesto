@@ -1,4 +1,14 @@
-export class FormValidator {
+export { formElementList, FormValidator };
+
+const formElementList = {
+  input: '.popup__input',
+  submitButton: '.popup__submit-btn',
+  inactiveButtonClass: 'popup__submit-btn_inactive',
+  inputErrorClass: 'popup__input_error',
+  errorTextClass: 'popup__input_texterror'
+};
+
+class FormValidator {
   constructor(obj, form) {
     this._input = obj.input;
     this._submitButton = obj.submitButton;
@@ -41,9 +51,9 @@ export class FormValidator {
     this._buttonElement.disabled = false;
   }
 
-  toggleButtonState = () => {
+  toggleButtonState = () => { 
     if (this._hasInvalidInput(this._inputList)) {
-      this._disableButtonElement(this._buttonElement);
+      this._disableButtonElement(this._buttonElement); // Дизейблить кнопку при невалидном поле
     } else {
       this._activeButtonElement(this._buttonElement);
     }

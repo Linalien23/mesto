@@ -1,9 +1,8 @@
-import { FormValidator } from './validate.js';
+import { formElementList, FormValidator } from './validate.js';
 import { Card } from './cards.js';
 
 
-const templateCards = document.querySelector('#cards').content;
-const photoGalleryCards = document.querySelector('.photo-gallery__cards'); //тут все карточки
+// const templateCards = document.querySelector('#cards').content;
 
 //формы
 const formElementAdd = document.querySelector('.add-popup__form');
@@ -17,9 +16,9 @@ const buttonEdit = document.querySelector('.profile__inner-edit-btn');
 const buttonAdd = document.querySelector('.profile__add-btn');
 const buttonAddSubmit = document.querySelector('.add-popup__submit-btn');
 const buttonEditSubmit = document.querySelector ('.edit-popup__submit-btn');
-const formElementList = {
-  inactiveButtonClass: 'popup__submit-btn_inactive',
-};
+// const formElementList = {
+//   inactiveButtonClass: 'popup__submit-btn_inactive',
+// };
 
 //попапы
 const popupEdit = document.querySelector('.edit-popup');
@@ -69,93 +68,132 @@ const placeCards = [ //добавляем эти карточки при заг�
   }
 ];
 
-const closeWithEsc = (evt) => { //функция закрытия попапа по кнопке Escape
+const photoGalleryCards = document.querySelector('.photo-gallery__cards'); // тут все карточки
+
+const createNewCard = function creatNewCard (data) { // Функция создания карточки
+  const card = new Card (data.name, data.link, '#cards');
+  const cardElement = card.generateCard();
+  return cardElement;
+};
+
+const addNewCards = function(items) { // Функция добавления новой карточки в DOM
+  const cardFromPopup = createNewCard (items);
+  photoGalleryCards.prepend(cardFromPopup);
+};
+
+placeCards.forEach((item) => { // Добавим карточки из массива placeCards в DOM
+  const cardFromArray = createNewCard (item);
+  photoGalleryCards.append(cardFromArray);
+});
+
+const handleAddCard = function (evt) { //функция добавления публикации
+  evt.preventDefault(); //запретить выполнение события по умолчанию, чтобы при отправении формы страница не перезагружалась
+  const photoCard = {}; //объект "фотокарточка"
+  photoCard.name = placeNameInput.value; //берём имя карточки из значения поля в форме добавлени карточки
+  photoCard.link = urlInput.value; //ссылка на  карточку из поля
+  addNewCards(photoCard); //вызываю функцию расположения новой карточки на первом месте
+  closePopup(popupAdd); //вызываю функцию закрытия попапа при клике на "Сохранить"
+  formElementAdd.reset(); //сбрасываю значения в полях формы
+}
+
+// Общая функция открытия попапа
+export function openPopup(popup) {
+  popup.classList.add('popup_opened'); //добавляю попапу новый класс
+  document.addEventListener ('keyup', closeWithEsc); //добавляю обработчик нажатия, когда попап открыт
+};
+
+// Общая функция закрытия попапа
+function closePopup(popup) {
+  popup.classList.remove('popup_opened'); //удаляю ранее добавленный класс
+  document.removeEventListener ('keyup', closeWithEsc);//удаляю обработчик нажатия, когда попап закрыт
+};
+
+// Функция закрытия попапа по кнопке Escape
+const closeWithEsc = (evt) => {
   if (evt.key === 'Escape') { //если пользователь нажал Escape
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened); //вызов функции закрытия попапа
   }
-}
+};
 
-function openPopup(popup) { //общая функция открытия попапа
-  popup.classList.add('popup_opened'); //добавляю попапу новый класс
-  document.addEventListener ('keyup', closeWithEsc); //добавляю обработчик нажатия, когда попап открыт
-}
-
-function closePopup(popup) { //общая функция закрытия попапа
-  popup.classList.remove('popup_opened'); //удаляю ранее добавленный класс
-  document.removeEventListener ('keyup', closeWithEsc);//удаляю обработчик нажатия, когда попап закрыт
-}
-
-function closePopupOverlayClick (evt) { //функция закрытия попапа по клику на оверлей
+// Функция закрытия попапа по клику на оверлей
+function closePopupOverlayClick (evt) {
   if (evt.target.classList.contains('popup_opened')) { //если нажали на элемент с классом popup_opened (то есть оверлей)
     closePopup(evt.target); //то вызови функцию закрытия попапа
   }
-}
+};
+
+// Валидация формы редактирования профиля
+const editProfileValidate = new FormValidator (formElementList, formElementEdit); // Экземпляр класса FormValidator
+editProfileValidate.enableValidation(); // enableValidation в файле валидации
+
+// Валидация формы добавления карточки
+const addProfileValidate = new FormValidator (formElementList, formElementAdd);
+addProfileValidate.enableValidation();
 
 //РЕДАКТИРОВАНИЕ ПРОФИЛЯ
 function handleEditProfile() { //функция РЕДАКТИРОВАНИЯ ПРОФИЛЯ
   nameInput.value = nameValue.textContent; //заполняю поле "имя" значением из профиля
   jobInput.value = jobValue.textContent; //заполняю поле "о себе" значением из профиля
-  activeButtonElement(buttonEditSubmit, formElementList); // функция активации кнопки (из файла с кодом для валидации)
+  editProfileValidate.toggleButtonState(); // функция активации кнопки (из файла с кодом для валидации)
   openPopup(popupEdit); //вызываю функцию открытия попапа
-}
+};
 
 function handleProfileFormSubmit (evt) { //отправить форму и добавить её содержимое на страницу
   evt.preventDefault(); //запретить выполнение события по умолчанию, чтобы при отправении формы страница не перезагружалась
-
   nameValue.textContent = nameInput.value; //заменяю имя в профиле на введённое в форме
   jobValue.textContent = jobInput.value; //заменяю "о себе" в профиле на введённое в форме
   closePopup(popupEdit); //вызываю функцию закрытия попапа при клике на "Сохранить"
-}
-
-//ЗАГРУЗКА КАРТОЧЕК
-
-const createPlaceCards = function (photoCard) { //функция загрузки карточек на страницу
-  const photoGalleryCard = templateCards.querySelector('.photo-gallery__card').cloneNode(true);
-  photoGalleryCard.querySelector('.photo-gallery__title').textContent = photoCard.name;
-  const CardItem = photoGalleryCard.querySelector('.photo-gallery__item');
-  CardItem.src = photoCard.link;
-  CardItem.alt = photoCard.name;
-
-  photoGalleryCard.querySelector('.photo-gallery__like-btn').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('photo-gallery__like-btn_active'); //лайк
-  });
-
-  photoGalleryCard.querySelector('.photo-gallery__delete-btn').addEventListener('click', function () { //удаление публикации
-    photoGalleryCard.remove();
-  });
-
-  photoGalleryCard.querySelector('.photo-gallery__zoom-btn').addEventListener('click', function () { //зум-попап
-    zoomPopupCard.src = photoCard.link;
-    zoomPopupCard.alt = photoCard.name;
-    zoomPopupCardTitle.textContent = photoCard.name;
-    openPopup(popupZoom);
-  });
-
-  return photoGalleryCard;
 };
 
-//ДОБАВЛЕНИЕ КАРТОЧКИ
+//ЗАГРУЗКА КАРТОЧЕК ПЕРЕЕХАЛА В ОТДЕЛЬНЫЙ ФАЙЛ С КЛАССОМ CARD
 
-const comeFirstCard = function (photoCard) { //функция расположения новой карточки на первом месте
-  photoGalleryCards.prepend(createPlaceCards(photoCard));
-}
+// const createPlaceCards = function (photoCard) { //функция загрузки карточек на страницу
+//   const photoGalleryCard = templateCards.querySelector('.photo-gallery__card').cloneNode(true);
+//   photoGalleryCard.querySelector('.photo-gallery__title').textContent = photoCard.name;
+//   const CardItem = photoGalleryCard.querySelector('.photo-gallery__item');
+//   CardItem.src = photoCard.link;
+//   CardItem.alt = photoCard.name;
 
-const handleAddCard = function (evt) { //функция добавления публикации
-  evt.preventDefault(); //запретить выполнение события по умолчанию, чтобы при отправении формы страница не перезагружалась
+//   photoGalleryCard.querySelector('.photo-gallery__like-btn').addEventListener('click', function (evt) {
+//     evt.target.classList.toggle('photo-gallery__like-btn_active'); //лайк
+//   });
 
-  const photoCard = {}; //объект "фотокарточка"
-  photoCard.name = placeNameInput.value; //берём имя карточки из значения поля в форме добавлени карточки
-  photoCard.link = urlInput.value; //ссылка на  карточку из поля
-  comeFirstCard(photoCard); //вызываю функцию расположения новой карточки на первом месте
-  closePopup(popupAdd); //вызываю функцию закрытия попапа при клике на "Сохранить"
-  formElementAdd.reset(); //сбрасываю значения в полях формы
-}
+//   photoGalleryCard.querySelector('.photo-gallery__delete-btn').addEventListener('click', function () { //удаление публикации
+//     photoGalleryCard.remove();
+//   });
 
-const newPlaceCards = placeCards.map(function (photoCard) { //новый массив из объявленного ранее массива карточек (массив в отдельном модуле)
-  return createPlaceCards(photoCard);
-});
-photoGalleryCards.append(...newPlaceCards); //добавляю новый массив карточек в список
+//   photoGalleryCard.querySelector('.photo-gallery__zoom-btn').addEventListener('click', function () { //зум-попап
+//     zoomPopupCard.src = photoCard.link;
+//     zoomPopupCard.alt = photoCard.name;
+//     zoomPopupCardTitle.textContent = photoCard.name;
+//     openPopup(popupZoom);
+//   });
+
+//   return photoGalleryCard;
+// };
+
+//ДОБАВЛЕНИЕ КАРТОЧКИ ПЕРЕПИСАНО ВЫШЕ
+
+// const comeFirstCard = function (photoCard) { //функция расположения новой карточки на первом месте
+//   photoGalleryCards.prepend(createPlaceCards(photoCard));
+// }
+
+// const handleAddCard = function (evt) { //функция добавления публикации
+//   evt.preventDefault(); //запретить выполнение события по умолчанию, чтобы при отправении формы страница не перезагружалась
+
+//   const photoCard = {}; //объект "фотокарточка"
+//   photoCard.name = placeNameInput.value; //берём имя карточки из значения поля в форме добавлени карточки
+//   photoCard.link = urlInput.value; //ссылка на  карточку из поля
+//   comeFirstCard(photoCard); //вызываю функцию расположения новой карточки на первом месте
+//   closePopup(popupAdd); //вызываю функцию закрытия попапа при клике на "Сохранить"
+//   formElementAdd.reset(); //сбрасываю значения в полях формы
+// }
+
+// const newPlaceCards = placeCards.map(function (photoCard) { //новый массив из объявленного ранее массива карточек (массив в отдельном модуле)
+//   return createPlaceCards(photoCard);
+// });
+// photoGalleryCards.append(...newPlaceCards); //добавляю новый массив карточек в список
 
 //ОБРАБОТЧИКИ СОБЫТИЙ
 
@@ -172,7 +210,7 @@ buttonEditClose.addEventListener('click', function () { //закрыть поп�
 formElementEdit.addEventListener('submit', handleProfileFormSubmit ); //отправить форму и добавить её содержимое на страницу
 
 buttonAdd.addEventListener('click', function () { //открываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по кнопке
-  disableButtonElement( buttonAddSubmit, formElementList); //дизейблю кнопку, чтоб нельзя было добавить пустую карточку
+  addProfileValidate.toggleButtonState(); // Функция из файла валидации
   openPopup(popupAdd); 
 });
 

@@ -36,7 +36,7 @@ export class Card {
       this._deleteCard();
     });
 
-    this._cardImage.addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => { // Клик по карточке открывает зумпопап
       this._openZoomPopup();
     });
   }
