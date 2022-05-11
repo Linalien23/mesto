@@ -1,5 +1,5 @@
-import { formElementList, FormValidator } from './validate.js';
-import { Card } from './cards.js';
+import { formElementList, FormValidator } from './FormValidator.js';
+import { Card } from './Card.js';
 
 
 // const templateCards = document.querySelector('#cards').content;
