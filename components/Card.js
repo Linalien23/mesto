@@ -1,10 +1,8 @@
-import { openPopup } from "./index.js";
-
 export class Card {
-  constructor(name, link, cardSelector) { // В конструкторе будут динамические данные, для каждого экземпляра свои
-    this._name = name; // name и link — приватные поля, 
-    this._link = link; // они нужны только внутри класса
+  constructor(data, cardSelector, handleCardClick) { // В конструкторе будут динамические данные, для каждого экземпляра свои
+    this._cardData = data;
     this._cardSelector = cardSelector; // записали селектор в приватное поле
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -19,9 +17,9 @@ export class Card {
   generateCard() { // Метод подготовит карточку к публикации
     this._element = this._getTemplate(); // Запишем разметку в приватное поле _element, так у других элементов появится доступ к ней
     this._cardImage = this._element.querySelector('.photo-gallery__item');
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
-    this._element.querySelector('.photo-gallery__title').textContent = this._name;
+    this._cardImage.src = this._cardData.link;
+    this._cardImage.alt = this._cardData.name;
+    this._element.querySelector('.photo-gallery__title').textContent = this._cardData.name;
     this._like = this._element.querySelector('.photo-gallery__like-btn');
     this._setEventListeners(); // Добавим обработчики
     return this._element; // Вернём элемент наружу
@@ -37,7 +35,7 @@ export class Card {
     });
 
     this._cardImage.addEventListener('click', () => { // Клик по карточке открывает зумпопап
-      this._openZoomPopup();
+      this._handleCardClick(this._cardData.name, this._cardData.link)
     });
   }
 
@@ -50,11 +48,11 @@ export class Card {
     this._element = null;
   }
 
-  _openZoomPopup() {
-    document.querySelector('.zoom-popup__item').src = this._link;
-    document.querySelector('.zoom-popup__item').alt = this._name;
-    document.querySelector('.zoom-popup__title').textContent = this._name;
-    openPopup(document.querySelector('.zoom-popup'));
-  }
+  // _openZoomPopup() {
+  //   document.querySelector('.zoom-popup__item').src = this._link;
+  //   document.querySelector('.zoom-popup__item').alt = this._name;
+  //   document.querySelector('.zoom-popup__title').textContent = this._name;
+  //   openPopup(document.querySelector('.zoom-popup'));
+  // }
 
 }
