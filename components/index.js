@@ -29,11 +29,6 @@ const jobInput = popupEdit.querySelector('.popup__input_type_job');
 const placeNameInput = popupAdd.querySelector('.popup__input_type_place');
 const urlInput = popupAdd.querySelector('.popup__input_type_url');
 
-//закрывающие крестики
-const buttonEditClose = popupEdit.querySelector('.popup__close-btn');
-const buttonAddClose = popupAdd.querySelector('.popup__close-btn');
-const buttonZoomClose = popupZoom.querySelector('.zoom-popup__close-btn');
-
 //массив карточек
 const placeCards = [ //добавляем эти карточки при загрузке страницы
   {
@@ -150,29 +145,28 @@ function handleProfileFormSubmit(evt) { //отправить форму и до�
 };
 
 //ОБРАБОТЧИКИ СОБЫТИЙ
-popupEdit.addEventListener('click', closePopupOverlayClick);
-popupAdd.addEventListener('click', closePopupOverlayClick);
-popupZoom.addEventListener('click', closePopupOverlayClick);
+
+//объединить обработчики оверлея и крестиков:
+const popups = document.querySelectorAll('.popup') // находим все попапы
+
+popups.forEach((popup) => { // пробегаемся по ним, навешивая обработчик
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) { // закрываем попап (любой) по нажатию на оверлей
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close-btn')) { // закрываем попап (любой) по нажатию на крестик
+          closePopup(popup)
+        }
+    })
+})
 
 buttonEdit.addEventListener('click', handleEditProfile); //открыть попап по клику на кнопку редактирования профиля (вызов функции редактирования)
-
-buttonEditClose.addEventListener('click', function () { //закрыть попап по клику на крестик
-  closePopup(popupEdit);
-});
 
 formElementEdit.addEventListener('submit', handleProfileFormSubmit); //отправить форму и добавить её содержимое на страницу
 
 buttonAdd.addEventListener('click', function () { //открываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по кнопке
   addProfileValidate.toggleButtonState(); // Функция из файла валидации
   openPopup(popupAdd);
-});
-
-buttonAddClose.addEventListener('click', function () { //закрываю попап ДОБАВЛЕНИЯ КАРТОЧКИ кликом по крестику
-  closePopup(popupAdd);
-});
-
-buttonZoomClose.addEventListener('click', function () { //закрываю zoom-попап кликом по крестику
-  closePopup(popupZoom);
 });
 
 formElementAdd.addEventListener('submit', handleAddCard); //вызываю функцию добавления карточки по клику на "Сохранить"

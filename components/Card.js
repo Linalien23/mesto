@@ -48,11 +48,4 @@ export class Card {
     this._element = null;
   }
 
-  // _openZoomPopup() {
-  //   document.querySelector('.zoom-popup__item').src = this._link;
-  //   document.querySelector('.zoom-popup__item').alt = this._name;
-  //   document.querySelector('.zoom-popup__title').textContent = this._name;
-  //   openPopup(document.querySelector('.zoom-popup'));
-  // }
-
-}
+};
