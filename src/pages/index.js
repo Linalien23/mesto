@@ -1,5 +1,5 @@
-import { formElementList, FormValidator } from './FormValidator.js';
-import { Card } from './Card.js';
+import { formElementList, FormValidator } from '../components/FormValidator.js';
+import { Card } from '../components/Card.js';
 
 //формы
 const formElementAdd = document.querySelector('.add-popup__form');
