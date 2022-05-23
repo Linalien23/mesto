@@ -28,27 +28,27 @@ export const jobInput = popupEdit.querySelector('.popup__input_type_job');
 export const placeCards = [ // Добавить эти карточки при загрузке страницы
   {
     name: 'Гамсутль',
-    link: './images/Gams.jpg'
+    link: '../images/Gams.jpg'
   },
   {
     name: 'Хунзах',
-    link: './images/Hun.jpg'
+    link: '../images/Hun.jpg'
   },
   {
     name: 'Сулак',
-    link: './images/Sulack.jpg'
+    link: '../images/Sulack.jpg'
   },
   {
     name: 'Матлас',
-    link: './images/Matlas.jpg'
+    link: '../images/Matlas.jpg'
   },
   {
     name: 'Ирганай',
-    link: './images/Irganai.jpg'
+    link: '../images/Irganai.jpg'
   },
   {
     name: 'Дербент',
-    link: './images/Derbent.jpg'
+    link: '../images/Derbent.jpg'
   }
 ];
 
