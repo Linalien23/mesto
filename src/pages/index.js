@@ -1,63 +1,7 @@
 import { formElementList, FormValidator } from '../components/FormValidator.js';
 import { Card } from '../components/Card.js';
 
-//формы
-const formElementAdd = document.querySelector('.add-popup__form');
-const formElementEdit = document.querySelector('.edit-popup__form');
 
-const nameValue = document.querySelector('.profile__inner-name');
-const jobValue = document.querySelector('.profile__inner-activity');
-
-//кнопки
-const buttonEdit = document.querySelector('.profile__inner-edit-btn');
-const buttonAdd = document.querySelector('.profile__add-btn');
-const buttonAddSubmit = document.querySelector('.add-popup__submit-btn');
-const buttonEditSubmit = document.querySelector('.edit-popup__submit-btn');
-
-//попапы
-const popupEdit = document.querySelector('.edit-popup');
-const popupAdd = document.querySelector('.add-popup');
-const popupZoom = document.querySelector('.zoom-popup');
-
-//содержимое попапов
-const zoomPopupCard = document.querySelector('.zoom-popup__item');
-const zoomPopupCardTitle = document.querySelector('.zoom-popup__title');
-
-//инпуты
-const nameInput = popupEdit.querySelector('.popup__input_type_name');
-const jobInput = popupEdit.querySelector('.popup__input_type_job');
-const placeNameInput = popupAdd.querySelector('.popup__input_type_place');
-const urlInput = popupAdd.querySelector('.popup__input_type_url');
-
-//массив карточек
-const placeCards = [ //добавляем эти карточки при загрузке страницы
-  {
-    name: 'Гамсутль',
-    link: './images/Gams.jpg'
-  },
-  {
-    name: 'Хунзах',
-    link: './images/Hun.jpg'
-  },
-  {
-    name: 'Сулак',
-    link: './images/Sulack.jpg'
-  },
-  {
-    name: 'Матлас',
-    link: './images/Matlas.jpg'
-  },
-  {
-    name: 'Ирганай',
-    link: './images/Irganai.jpg'
-  },
-  {
-    name: 'Дербент',
-    link: './images/Derbent.jpg'
-  }
-];
-
-const photoGalleryCards = document.querySelector('.photo-gallery__cards'); // тут все карточки
 
 // НОВЫЙ КОД ЗАГРУЗКИ И ДОБАВЛЕНИЯ КАРТОЧЕК
 const createNewCard = (data) => { // Функция создания карточки
