@@ -1,6 +1,6 @@
 export class Popup {
     constructor(popupSelector) {
-        this._popup = document.querySelectorAll(popupSelector);
+        this._popup = document.querySelector(popupSelector);
     }
 
     open() { // Общая функция открытия попапа
@@ -16,20 +16,19 @@ export class Popup {
     _handleEscClose = (evt) => { // Метод закрытия попапа по кнопке Escape
         if (evt.key === 'Escape') { //если пользователь нажал Escape
             const popupOpened = document.querySelector('.popup_opened');
-            closePopup(popupOpened); //вызов функции закрытия попапа
+            this.close(popupOpened); //вызов функции закрытия попапа
         }
     };
 
     setEventListeners() {
-        this._popup.forEach((popup) => { // пробегаемся по всем попапам, навешивая обработчик
-            popup.addEventListener('mousedown', (evt) => {
-                if (evt.target.classList.contains('popup_opened')) { // закрываем попап (любой) по нажатию на оверлей
-                    this.close(popup);
-                }
-                if (evt.target.classList.contains('popup__close-btn')) { // закрываем попап (любой) по нажатию на крестик
-                    this.close(popup);
-                }
-            })
-        })
-    };
-}
+        const closeButton = this._popup.querySelector('.popup__close-btn')
+        closeButton.addEventListener('click', () => {
+            this.close();
+        });
+        this._popup.addEventListener('click', (evt) => {
+            if (evt.target.classList.contains('popup_opened')) {
+                this.close(evt.target);
+            }
+        });
+    }
+};

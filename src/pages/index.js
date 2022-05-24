@@ -17,8 +17,9 @@ import {
   jobInput
 } from '../utils/constants.js';
 
-const zoomPopupFunc = new PopupWithImage('.zoom-popup'); // экземпляр класса PopupWithImage
+const zoomPopupFunc = new PopupWithImage ('.zoom-popup'); // экземпляр класса PopupWithImage
 zoomPopupFunc.setEventListeners();
+
 
 // ФУНКЦИЯ ОТКРЫТИЯ ЗУМ-ПОПАПА ДЛЯ ПЕРЕДАЧИ В Card (ИЗ РЕВЬЮ)
 function handleCardClick(cardname, link) {
