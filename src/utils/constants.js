@@ -19,37 +19,34 @@ export const formElementList = {
 export const buttonEdit = document.querySelector('.profile__inner-edit-btn'); // Редактировать
 export const buttonAdd = document.querySelector('.profile__add-btn'); // Добавить фотографию
 
-
 //инпуты
-export const nameInput = popupEdit.querySelector('.popup__input_type_name');
-export const jobInput = popupEdit.querySelector('.popup__input_type_job');
+export const nameInput = document.querySelector('.popup__input_type_name');
+export const jobInput = document.querySelector('.popup__input_type_job');
 
 //массив карточек
 export const placeCards = [ // Добавить эти карточки при загрузке страницы
   {
-    name: 'Гамсутль',
+    cardname: 'Гамсутль',
     link: '../images/Gams.jpg'
   },
   {
-    name: 'Хунзах',
+    cardname: 'Хунзах',
     link: '../images/Hun.jpg'
   },
   {
-    name: 'Сулак',
+    cardname: 'Сулак',
     link: '../images/Sulack.jpg'
   },
   {
-    name: 'Матлас',
+    cardname: 'Матлас',
     link: '../images/Matlas.jpg'
   },
   {
-    name: 'Ирганай',
+    cardname: 'Ирганай',
     link: '../images/Irganai.jpg'
   },
   {
-    name: 'Дербент',
+    cardname: 'Дербент',
     link: '../images/Derbent.jpg'
   }
 ];
-
-const photoGalleryCards = document.querySelector('.photo-gallery__cards'); // тут все карточки

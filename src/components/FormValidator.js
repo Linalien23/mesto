@@ -51,13 +51,22 @@ class FormValidator {
     this._buttonElement.disabled = false;
   }
 
-  toggleButtonState = () => { 
+  _toggleButtonState = () => { 
     if (this._hasInvalidInput(this._inputList)) {
       this._disableButtonElement(this._buttonElement); // Дизейблить кнопку при невалидном поле
     } else {
       this._activeButtonElement(this._buttonElement);
     }
   }
+
+  resetValidation() { // Метод сброса неверных данных формы при закрытии попапа с формой
+    this._toggleButtonState(); 
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement); 
+    });
+
+  } 
 
   _isValid = (inputElement) => {
     if (!inputElement.validity.valid) {
@@ -68,11 +77,11 @@ class FormValidator {
   }
 
   _setEventListeners = () => {
-    this.toggleButtonState();
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement);
-        this.toggleButtonState(this._inputList);
+        this._toggleButtonState(this._inputList);
       });
     });
   }
