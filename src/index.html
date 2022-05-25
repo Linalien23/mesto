@@ -75,11 +75,11 @@
       <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form edit-popup__form" name="edit" novalidate>
-          <input id="name-input" class="popup__input popup__input_type_name" type="text" placeholder="Имя" name="name"
+          <input id="name-input" class="popup__input popup__input_type_name" type="text" placeholder="Имя" name="username"
             required minlength="2" maxlength="40">
           <span class="name-input-error popup__texterror popup__texterror_top"></span>
           <input id="job-input" class="popup__input popup__input_type_job" type="text" placeholder="О себе"
-            name="caption" required minlength="2" maxlength="200">
+            name="job" required minlength="2" maxlength="200">
           <span class="job-input-error popup__texterror popup__texterror_bottom"></span>
           <button class="popup__submit-btn edit-popup__submit-btn" type="submit">Cохранить</button>
         </form>
@@ -92,10 +92,10 @@
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form add-popup__form" name="add" novalidate>
           <input id="place-input" class="popup__input popup__input_type_place" type="text" placeholder="Название"
-            name="place" required minlength="2" maxlength="30">
+            name="cardname" required minlength="2" maxlength="30">
           <span class="place-input-error popup__texterror popup__texterror_top"></span>
           <input id="url-input" class="popup__input popup__input_type_url" type="url" placeholder="Ссылка на картинку"
-            name="url" required>
+            name="link" required>
           <span class="url-input-error popup__texterror popup__texterror_bottom"></span>
           <button class="popup__submit-btn add-popup__submit-btn" type="submit">Создать</button>
         </form>
