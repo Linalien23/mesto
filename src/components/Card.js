@@ -1,6 +1,7 @@
 export class Card {
   constructor(data, cardSelector, handleCardClick) { // В конструкторе будут динамические данные, для каждого экземпляра свои
-    this._cardData = data;
+    this._name = data.cardname;
+    this._link = data.link;
     this._cardSelector = cardSelector; // записали селектор в приватное поле
     this._handleCardClick = handleCardClick;
   }
@@ -17,9 +18,9 @@ export class Card {
   generateCard() { // Метод подготовит карточку к публикации
     this._element = this._getTemplate(); // Запишем разметку в приватное поле _element, так у других элементов появится доступ к ней
     this._cardImage = this._element.querySelector('.photo-gallery__item');
-    this._cardImage.src = this._cardData.link;
-    this._cardImage.alt = this._cardData.name;
-    this._element.querySelector('.photo-gallery__title').textContent = this._cardData.name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._element.querySelector('.photo-gallery__title').textContent = this._name;
     this._like = this._element.querySelector('.photo-gallery__like-btn');
     this._setEventListeners(); // Добавим обработчики
     return this._element; // Вернём элемент наружу
@@ -35,7 +36,7 @@ export class Card {
     });
 
     this._cardImage.addEventListener('click', () => { // Клик по карточке открывает зумпопап
-      this._handleCardClick(this._cardData.name, this._cardData.link)
+      this._handleCardClick(this._name, this._link)
     });
   }
 

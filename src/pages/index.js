@@ -40,7 +40,7 @@ const createCard = new Section({ // Создать карточки из мас�
     createCard.addItem(cardFromArray);
   }
 }, '.photo-gallery__cards');
-createCard.renderItems(); // Отрисовывать карточки из массива
+  createCard.renderItems(); // Отрисовывать карточки из массива
 
 const createUserInfo = new UserInfo(userInf);
 
@@ -57,7 +57,7 @@ const popupWithFormAdd = new PopupWithForm(
   {
     callbackSubmitForm: (data) => {
       const cardFromPopup = createNewCard(data);
-      creatCard.addItem(cardFromPopup);
+      createCard.addItem(cardFromPopup);
       popupWithFormAdd.close();
     }
   }, '.add-popup');

@@ -23,30 +23,37 @@ export const buttonAdd = document.querySelector('.profile__add-btn'); // Доб�
 export const nameInput = document.querySelector('.popup__input_type_name');
 export const jobInput = document.querySelector('.popup__input_type_job');
 
+import GamsImage from '../images/Gams.jpg';
+import HunImage from '../images/Hun.jpg';
+import SulackImage from '../images/Sulack.jpg';
+import MatlasImage from '../images/Matlas.jpg';
+import IrganaiImage from '../images/Irganai.jpg';
+import DerbentImage from '../images/Derbent.jpg';
+
 //массив карточек
 export const placeCards = [ // Добавить эти карточки при загрузке страницы
   {
     cardname: 'Гамсутль',
-    link: '../images/Gams.jpg'
+    link: GamsImage
   },
   {
     cardname: 'Хунзах',
-    link: '../images/Hun.jpg'
+    link: HunImage
   },
   {
     cardname: 'Сулак',
-    link: '../images/Sulack.jpg'
+    link: SulackImage
   },
   {
     cardname: 'Матлас',
-    link: '../images/Matlas.jpg'
+    link: MatlasImage
   },
   {
     cardname: 'Ирганай',
-    link: '../images/Irganai.jpg'
+    link: IrganaiImage
   },
   {
     cardname: 'Дербент',
-    link: '../images/Derbent.jpg'
+    link: DerbentImage
   }
 ];

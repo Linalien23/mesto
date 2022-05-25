@@ -10,7 +10,7 @@ export class Popup {
 
     close() { // Общая функция закрытия попапа
         this._popup.classList.remove('popup_opened'); // Удалить ранее добавленный класс
-        document.removeEventListener('keyup', _handleEscClose);// Удалить обработчик нажатия, когда попап закрыт
+        document.removeEventListener('keyup', this._handleEscClose);// Удалить обработчик нажатия, когда попап закрыт
     }
 
     _handleEscClose = (evt) => { // Метод закрытия попапа по кнопке Escape
