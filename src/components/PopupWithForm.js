@@ -8,19 +8,19 @@ export class PopupWithForm extends Popup {
         this._inputList = this._formElement.querySelectorAll('.popup__input');
     }
 
-    _getInputValues() {
-        this._formValues = {};
-        this._inputList.forEach(input => { // Пройтись по всем инпутам
-            this._formValues[input.name] = input.value; // 
+    _getInputValues() { // Собрать данные всех полей формы
+        this._formValues = {}; // Создать пустой объект
+        this._inputList.forEach((input) => { // Пройтись по всем инпутам
+            this._formValues[input.name] = input.value; // Добавить в созданный выше объект значения всех полей
         });
-        return this._formValues;
+        return this._formValues; // Вернуть объект
     }
 
     setEventListeners() {
+        super.setEventListeners();
         this._formElement.addEventListener('submit', () => { // Отправить форму и добавить её содержимое на страницу
             this._callbackSubmitForm(this._getInputValues());
         });
-        super.setEventListeners();
     }
 
     close() {

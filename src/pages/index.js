@@ -87,17 +87,3 @@ editProfileValidate.enableValidation(); // enableValidation в файле вал
 // Валидация формы добавления карточки
 const addProfileValidate = new FormValidator(formElementList, formElementAdd);
 addProfileValidate.enableValidation();
-
-//объединить обработчики оверлея и крестиков:
-// const popups = document.querySelectorAll('.popup') // находим все попапы
-
-// popups.forEach((popup) => { // пробегаемся по ним, навешивая обработчик
-//   popup.addEventListener('mousedown', (evt) => {
-//     if (evt.target.classList.contains('popup_opened')) { // закрываем попап (любой) по нажатию на оверлей
-//       closePopup(popup)
-//     }
-//     if (evt.target.classList.contains('popup__close-btn')) { // закрываем попап (любой) по нажатию на крестик
-//       closePopup(popup)
-//     }
-//   })
-// })

@@ -1,12 +1,12 @@
-export class Card {
-  constructor(data, cardSelector, handleCardClick) { // В конструкторе будут динамические данные, для каждого экземпляра свои
+export class Card { // Создаем конструктор с данными карточки и ее template-элементом
+  constructor({ data, handleCardClick }, cardSelector) { // В конструкторе будут динамические данные, для каждого экземпляра свои
     this._name = data.cardname;
     this._link = data.link;
     this._cardSelector = cardSelector; // записали селектор в приватное поле
     this._handleCardClick = handleCardClick;
   }
 
-  _getTemplate() {
+  _getTemplate() { 
     const cardElement = document // забираем разметку из HTML и клонируем элемент
       .querySelector(this._cardSelector) // Используем this._cardSelector
       .content
