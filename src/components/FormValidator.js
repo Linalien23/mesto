@@ -1,12 +1,4 @@
-export { formElementList, FormValidator };
-
-const formElementList = {
-  input: '.popup__input',
-  submitButton: '.popup__submit-btn',
-  inactiveButtonClass: 'popup__submit-btn_inactive',
-  inputErrorClass: 'popup__input_error',
-  errorTextClass: 'popup__input_texterror'
-};
+export { FormValidator };
 
 class FormValidator {
   constructor(obj, form) {
