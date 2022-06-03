@@ -6,7 +6,7 @@ export class Card { // Создаем конструктор с данными �
     this._handleCardClick = handleCardClick;
   }
 
-  _getTemplate() { 
+  _getTemplate() {
     const cardElement = document // забираем разметку из HTML и клонируем элемент
       .querySelector(this._cardSelector) // Используем this._cardSelector
       .content
