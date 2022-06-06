@@ -17,7 +17,33 @@ import {
   jobInput
 } from '../utils/constants.js';
 
-const zoomPopupFunc = new PopupWithImage ('.zoom-popup'); // экземпляр класса PopupWithImage
+import { PopupDeleteImage } from '../components/PopupDeleteImage';
+
+let userId;
+
+const createUserInfo = new UserInfo(userInf);
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-42',
+  headers: {
+      authorization: 'c49772d7-9370-4a4f-bf19-05cc76e5748b',
+      'Content-Type': 'application/json'
+  }
+});
+
+const pageContent = [api.getProfileInfo(), api.getCards()]; // Получить информацию о пользователе и карточки с сервера (массив с промисами)
+
+Promise.all ( pageContent ) // Передать массив с промисами методу Promise.all
+  .then(([userStats, data]) => {
+    userId = userStats._id;
+    createUserInfo.setUserInfo(userStats);
+    createCard.renderItems(data);
+  })
+  .catch ((err) => {
+    console.log (err);
+})
+
+const zoomPopupFunc = new PopupWithImage('.zoom-popup'); // экземпляр класса PopupWithImage
 zoomPopupFunc.setEventListeners();
 
 
@@ -40,9 +66,7 @@ const createCard = new Section({ // Создать карточки из мас�
     createCard.addItem(cardFromArray);
   }
 }, '.photo-gallery__cards');
-  createCard.renderItems(); // Отрисовывать карточки из массива
-
-const createUserInfo = new UserInfo(userInf);
+createCard.renderItems(); // Отрисовывать карточки из массива
 
 const popupWithFormEdit = new PopupWithForm(
   {
