@@ -1,0 +1,12 @@
+
+.edit-avatar-popup__texterror {
+    left: 36px;
+    top: 140px;
+}
+
+@media screen and (max-width: 540px) {
+    .edit-avatar-popup__texterror {
+        left: 20px;
+        top: 150px;
+    }
+}
