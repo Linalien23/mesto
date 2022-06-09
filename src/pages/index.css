@@ -40,3 +40,7 @@
 @import url('../blocks/delete-popup/__container/delete-popup__container.css');
 @import url('../blocks/delete-popup/__form-button/delete-popup__form-button.css');
 @import url('../blocks/delete-popup/__form/delete-popup__form.css');
+@import url('../blocks/edit-avatar-popup/__container/edit-avatar-popup__container.css');
+@import url('../blocks/edit-avatar-popup/__form/edit-avatar-popup__form.css');
+@import url('../blocks/edit-avatar-popup/__submit-btn/edit-avatar-popup__submit-btn.css');
+@import url('../blocks/edit-avatar-popup/__texterror/edit-avatar-popup__texterror.css');
