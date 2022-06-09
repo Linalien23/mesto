@@ -85,7 +85,7 @@ function likeCards(cardElement, id) { // Поставить лайк
     })
 }
 
-function disiikeCards(cardElement, id) { // Убрать лайк
+function dislikeCards(cardElement, id) { // Убрать лайк
   api.dislikeCard(cardElement, id)
     .then((data) => {
       cardElement.querySelector('.photo-gallery__like-btn').classList.remove('photo-gallery__like-btn_active');
@@ -97,7 +97,7 @@ function disiikeCards(cardElement, id) { // Убрать лайк
 }
 
 const createNewCard = (data) => { // Функция создания карточки
-  const card = new Card({ data, handleCardClick, deleteCardPopup, likeCards, disiikeCards }, userId, '#cards');
+  const card = new Card({ data, handleCardClick, deleteCardPopup, likeCards, dislikeCards }, userId, '#cards');
   const cardElement = card.generateCard();
   return cardElement;
 };

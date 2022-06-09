@@ -1,9 +1,16 @@
 export class Card { // Создаем конструктор с данными карточки и ее template-элементом
-  constructor({ data, handleCardClick }, cardSelector) { // В конструкторе будут динамические данные, для каждого экземпляра свои
+  constructor({ data, handleCardClick, deleteCardPopup, likeCards, dislikeCards }, cardSelector) { // В конструкторе будут динамические данные, для каждого экземпляра свои
     this._name = data.cardname;
     this._link = data.link;
-    this._cardSelector = cardSelector; // записали селектор в приватное поле
+    this._id = data._id;
+    this._owner = data.owner;
+    this._like = data.like;
     this._handleCardClick = handleCardClick;
+    this._deleteCardPopup = deleteCardPopup;
+    this._likeCards = likeCards;
+    this._dislikeCards = dislikeCards;
+    this._userId = userId;
+    this._cardSelector = cardSelector; // записали селектор в приватное поле
   }
 
   _getTemplate() {
@@ -21,7 +28,21 @@ export class Card { // Создаем конструктор с данными �
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._element.querySelector('.photo-gallery__title').textContent = this._name;
-    this._like = this._element.querySelector('.photo-gallery__like-btn');
+    this._likeBtn = this._element.querySelector('.photo-gallery__like-btn');
+    this._likeCounter = this._element.querySelector('.photo-gallery__like-counter');
+    this._likeCounter.textContent = this._like.length;
+
+    if (this._putLike()) { // Поставить лайк
+      this._likeBtn.classList.add('photo-gallery__like-btn-active');
+    }
+
+    this._deleteCardButton = this._element.querySelector('.photo-gallery__delete-btn') // находим корзину
+    if (this._userId === this._owner._id) { // если айдишник текущего юзера совпадает с айдишником владельца карточки
+      this._deleteCardButton.classList.add('photo-gallery__delete-btn-visible'); // показываем корзину
+    } else {
+      this._deleteCardButton.classList.remove('photo-gallery__delete-btn-visible'); // иначе скрываем корзину
+    };
+
     this._setEventListeners(); // Добавим обработчики
     return this._element; // Вернём элемент наружу
   }
