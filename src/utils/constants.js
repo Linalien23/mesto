@@ -2,9 +2,13 @@
 export const formElementAdd = document.querySelector('.add-popup__form');
 export const formElementEdit = document.querySelector('.edit-popup__form');
 
+//аватар
+export const profileAvatar = document.querySelector ('.profile__avatar');
+
 export const userInf = {
     nameValueSelector: '.profile__inner-name',
-    jobValueSelector: '.profile__inner-activity'
+    jobValueSelector: '.profile__inner-activity',
+    avatarSelector: '.profile__avatar'
 }
 
 export const formElementList = {
@@ -29,6 +33,7 @@ import SulackImage from '../images/Sulack.jpg';
 import MatlasImage from '../images/Matlas.jpg';
 import IrganaiImage from '../images/Irganai.jpg';
 import DerbentImage from '../images/Derbent.jpg';
+
 
 //массив карточек
 export const placeCards = [ // Добавить эти карточки при загрузке страницы
