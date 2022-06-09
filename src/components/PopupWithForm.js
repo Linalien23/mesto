@@ -6,6 +6,7 @@ export class PopupWithForm extends Popup {
         this._callbackSubmitForm = callbackSubmitForm; // Колбэк сабмита формы
         this._formElement = this._popup.querySelector('.popup__form');
         this._inputList = this._formElement.querySelectorAll('.popup__input');
+        his._popupButton = this._popup.querySelector('.popup__submit-btn');
     }
 
     _getInputValues() { // Собрать данные всех полей формы
@@ -26,5 +27,13 @@ export class PopupWithForm extends Popup {
     close() {
         super.close();
         this._formElement.reset(); // Сбрасывать форму при закрытии попапа
+    }
+
+    renderLoading(isLoading) {  // Добавить лоадер на кнопку "Сохранить"
+        if (isLoading) {
+            this._popupButton.textContent = 'Сохранение...';
+        } else {
+            this._popupButton.textContent = 'Сохранить';
+        }
     }
 }
