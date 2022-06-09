@@ -1,0 +1,7 @@
+.photo-gallery__like {
+    max-width: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}

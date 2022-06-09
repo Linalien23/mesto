@@ -1,3 +1,10 @@
 .photo-gallery__like-btn_active {
+    width: 22px;
+    height: 19px;
+    justify-self: flex-end;
     background-image: url('../../../../images/like_active.svg');
+    border: none;
+    background-color: transparent;
+    transition: 0.2s linear;
+    cursor: pointer;
 }
