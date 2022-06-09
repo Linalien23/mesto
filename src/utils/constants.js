@@ -1,11 +1,12 @@
 //формы
 export const formElementAdd = document.querySelector('.add-popup__form');
 export const formElementEdit = document.querySelector('.edit-popup__form');
+export const formElementEditAvatar = document.querySelector('.edit-avatar-popup__form');
 
 //аватар
 export const profileAvatar = document.querySelector ('.profile__avatar');
 
-export const userInf = {
+export const userData = {
     nameValueSelector: '.profile__inner-name',
     jobValueSelector: '.profile__inner-activity',
     avatarSelector: '.profile__avatar'
