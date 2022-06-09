@@ -29,6 +29,7 @@
 @import url('../blocks/photo-gallery/__card/photo-gallery__card.css');
 @import url('../blocks/photo-gallery/__item/photo-gallery__item.css');
 @import url('../blocks/photo-gallery/__title/photo-gallery__title.css');
+@import url('../blocks/photo-gallery/__like/photo-gallery__like');
 @import url('../blocks/photo-gallery/__like-btn/photo-gallery__like-btn.css');
 @import url('../blocks/photo-gallery/__like-btn/__like-btn_active/photo-gallery__like-btn_active.css');
 @import url('../blocks/photo-gallery/__delete-btn/photo-gallery__delete-btn.css');
