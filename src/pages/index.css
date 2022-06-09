@@ -33,6 +33,7 @@
 @import url('../blocks/photo-gallery/__like-btn/photo-gallery__like-btn.css');
 @import url('../blocks/photo-gallery/__like-btn/__like-btn_active/photo-gallery__like-btn_active.css');
 @import url('../blocks/photo-gallery/__delete-btn/photo-gallery__delete-btn.css');
+@import url('../blocks/photo-gallery/__delete-btn-visible/photo-gallery__delete-btn-visible.css');
 @import url('../blocks/photo-gallery/__zoom-btn/photo-gallery__zoom-btn.css');
 @import url('../blocks/zoom-popup/zoom-popup.css');
 @import url('../blocks/zoom-popup/__container/zoom-popup__container.css');
