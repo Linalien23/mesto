@@ -5,12 +5,12 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
-import { Api } from '../components/Api';
+import { Api } from '../components/Api.js';
 import {
   buttonEdit,
   buttonAdd,
   formElementEdit,
-  FormElementEditAvatar,
+  formElementEditAvatar,
   formElementAdd,
   placeCards,
   formElementList,
@@ -21,7 +21,7 @@ import {
 
 import { PopupDeleteImage } from '../components/PopupDeleteImage';
 
-let userId;
+let userId; // динамическая переменная обьявляется в файле, где вызывается
 
 const createUserInfo = new UserInfo(userData);
 
