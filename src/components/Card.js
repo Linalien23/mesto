@@ -1,10 +1,10 @@
 export class Card { // Создаем конструктор с данными карточки и ее template-элементом
-  constructor({ data, handleCardClick, deleteCardPopup, likeCards, dislikeCards }, cardSelector) { // В конструкторе будут динамические данные, для каждого экземпляра свои
+  constructor({ data, handleCardClick, deleteCardPopup, likeCards, dislikeCards }, userId, cardSelector) { // В конструкторе будут динамические данные, для каждого экземпляра свои
     this._name = data.cardname;
     this._link = data.link;
     this._id = data._id;
     this._owner = data.owner;
-    this._like = data.like;
+    this._likeArr = data.likeArr;
     this._handleCardClick = handleCardClick;
     this._deleteCardPopup = deleteCardPopup;
     this._likeCards = likeCards;
@@ -30,7 +30,7 @@ export class Card { // Создаем конструктор с данными �
     this._element.querySelector('.photo-gallery__title').textContent = this._name;
     this._likeBtn = this._element.querySelector('.photo-gallery__like-btn');
     this._likeCounter = this._element.querySelector('.photo-gallery__like-counter');
-    this._likeCounter.textContent = this._like.length;
+    this._likeCounter.textContent = this._likeArr.length;
 
     if (this._putLike()) { // Поставить лайк
       this._likeBtn.classList.add('photo-gallery__like-btn-active');
@@ -48,15 +48,15 @@ export class Card { // Создаем конструктор с данными �
   }
 
   _putLike() {
-    for (let i = 0; i < this._likes.length; i++) {
-      if (this._like[i]._id === this._userId) {
+    for (let i = 0; i < this._likeArr.length; i++) {
+      if (this._likeArr[i]._id === this._userId) {
         return true;
       }
     }
   }
 
   _setEventListeners() {
-    
+
     this._likeBtn.addEventListener('click', () => {
       this._likeBtn = !this._likeBtn;
       if (!this._likeBtn) {

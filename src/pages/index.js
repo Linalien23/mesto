@@ -77,7 +77,7 @@ function likeCards(cardElement, id) { // Поставить лайк
   api.likeCard(cardElement, id)
     .then((data) => {
       cardElement.querySelector('.photo-gallery__like-btn').classList.add('photo-gallery__like-btn_active'); // Активный лайк
-      cardElement.querySelector('.photo-gallery__like-counter').textContent = data.likes.length; // Счётчик лайков
+      cardElement.querySelector('.photo-gallery__like-counter').textContent = data.likeArr.length; // Счётчик лайков
     })
     .catch((err) => {
       console.log(err);
@@ -88,7 +88,7 @@ function dislikeCards(cardElement, id) { // Убрать лайк
   api.dislikeCard(cardElement, id)
     .then((data) => {
       cardElement.querySelector('.photo-gallery__like-btn').classList.remove('photo-gallery__like-btn_active');
-      cardElement.querySelector('.photo-gallery__like-counter').textContent = data.likes.length;
+      cardElement.querySelector('.photo-gallery__like-counter').textContent = data.like.length;
     })
     .catch((err) => {
       console.log(err);
