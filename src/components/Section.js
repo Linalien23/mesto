@@ -1,11 +1,12 @@
 export class Section {
-    constructor({ renderer }, containerSelector) {
+    constructor({ data, renderer }, containerSelector) {
+        this._dataArray = data;
         this._renderer = renderer;
         this._container = document.querySelector(containerSelector);
     }
 
-    renderItems(data) { // Метод, отвечающий за отрисовку всех элементов
-        data.reverse().forEach((item) => { // Перебирает массив данных _dataArray
+    renderItems() { // Метод, отвечающий за отрисовку всех элементов
+        this._dataArray.forEach((item) => { // Перебирает массив данных _dataArray
             this._renderer(item);
         });
     }

@@ -47,27 +47,25 @@ export class Card { // Создаем конструктор с данными �
     return this._element; // Вернём элемент наружу
   }
 
+
+
   _setEventListeners() {
-    this._like.addEventListener('click', () => {
-      this._likeCard();
+    this._likeBtn.addEventListener('click', () => {
+      this._likeBtn = !this._likeBtn;
+      if (!this._likeBtn) {
+        this._likeCards(this._element, this._id, this._likeCounter);
+      } else {
+        this._dislikeCards(this._element, this._id, this._likeCounter);
+      }
     });
 
-    this._element.querySelector('.photo-gallery__delete-btn').addEventListener('click', () => {
-      this._deleteCard();
+    this._deleteCardButton.addEventListener('click', () => {
+      this._deleteCardPopup(this._element, this._id);
     });
 
     this._cardImage.addEventListener('click', () => { // Клик по карточке открывает зумпопап
       this._handleCardClick(this._name, this._link)
     });
-  }
-
-  _likeCard() { // Метод лайка
-    this._like.classList.toggle('photo-gallery__like-btn_active');
-  }
-
-  _deleteCard() { // Метод удаления карточки
-    this._element.remove();
-    this._element = null;
   }
 
 };
