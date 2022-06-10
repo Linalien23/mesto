@@ -47,9 +47,16 @@ export class Card { // Создаем конструктор с данными �
     return this._element; // Вернём элемент наружу
   }
 
-
+  _putLike() {
+    for (let i = 0; i < this._likes.length; i++) {
+      if (this._like[i]._id === this._userId) {
+        return true;
+      }
+    }
+  }
 
   _setEventListeners() {
+    
     this._likeBtn.addEventListener('click', () => {
       this._likeBtn = !this._likeBtn;
       if (!this._likeBtn) {
