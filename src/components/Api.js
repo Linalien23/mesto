@@ -20,6 +20,15 @@ export class Api {
             );
     }
 
+    getCards() {
+        return fetch(`${this._baseUrl}/cards`, {
+            headers: this._headers
+        })
+            .then((res) =>
+                this.handleResponse(res)
+            );
+    }
+
     getInitialCards() { // Получить карточки
         return fetch(`${this._baseUrl}/cards`, {
             headers: this._headers

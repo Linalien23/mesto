@@ -12,7 +12,6 @@ import {
   formElementEdit,
   formElementEditAvatar,
   formElementAdd,
-  placeCards,
   formElementList,
   userData,
   nameInput,
@@ -103,7 +102,6 @@ const createNewCard = (data) => { // Функция создания карто�
 };
 
 const createCard = new Section({ // Создать карточки из массива
-  data: placeCards,
   renderer: (item) => {
     const cardFromArray = createNewCard(item);
     createCard.addItem(cardFromArray);
