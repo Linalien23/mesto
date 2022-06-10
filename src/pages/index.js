@@ -103,11 +103,10 @@ const createNewCard = (data) => { // Функция создания карто�
 
 const createCard = new Section({ // Создать карточки из массива
   renderer: (item) => {
-    const cardFromArray = createNewCard(item);
-    createCard.addItem(cardFromArray);
+    const cardFromServer = createNewCard(item);
+    createCard.addItem(cardFromServer);
   }
 }, '.photo-gallery__cards');
-createCard.renderItems(); // Отрисовывать карточки из массива
 
 // РЕДАКТИРОВАНИЕ ПРОФИЛЯ 🠗🠗🠗
 
