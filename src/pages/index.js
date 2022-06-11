@@ -77,7 +77,7 @@ function likeCards(cardElement, id) { // Поставить лайк
   api.likeCard(cardElement, id)
     .then((data) => {
       cardElement.querySelector('.photo-gallery__like-btn').classList.add('photo-gallery__like-btn_active'); // Активный лайк
-      cardElement.querySelector('.photo-gallery__like-counter').textContent = data.likeArr.length; // Счётчик лайков
+      cardElement.querySelector('.photo-gallery__like-counter').textContent = data.likes.length; // Счётчик лайков
     })
     .catch((err) => {
       console.log(err);
@@ -88,7 +88,7 @@ function dislikeCards(cardElement, id) { // Убрать лайк
   api.dislikeCard(cardElement, id)
     .then((data) => {
       cardElement.querySelector('.photo-gallery__like-btn').classList.remove('photo-gallery__like-btn_active');
-      cardElement.querySelector('.photo-gallery__like-counter').textContent = data.like.length;
+      cardElement.querySelector('.photo-gallery__like-counter').textContent = data.likes.length;
     })
     .catch((err) => {
       console.log(err);
@@ -135,8 +135,8 @@ popupWithFormEdit.setEventListeners();  // setEventListeners в классе Pop
 
 function editProfile() {
   const profileData = createUserInfo.getUserInfo();
-  nameInput.value = profileData.username; // заполняю поле "имя" значением из профиля
-  jobInput.value = profileData.job; //заполняю поле "о себе" значением из профиля
+  nameInput.value = profileData.name; // заполняю поле "имя" значением из профиля
+  jobInput.value = profileData.about; //заполняю поле "о себе" значением из профиля
   editProfileValidate.resetValidation();
   popupWithFormEdit.open();
 }

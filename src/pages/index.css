@@ -32,6 +32,7 @@
 @import url('../blocks/photo-gallery/__like/photo-gallery__like');
 @import url('../blocks/photo-gallery/__like-btn/photo-gallery__like-btn.css');
 @import url('../blocks/photo-gallery/__like-btn/__like-btn_active/photo-gallery__like-btn_active.css');
+@import url('../blocks/photo-gallery/__like-counter/photo-gallery__like-counter.css');
 @import url('../blocks/photo-gallery/__delete-btn/photo-gallery__delete-btn.css');
 @import url('../blocks/photo-gallery/__delete-btn-visible/photo-gallery__delete-btn-visible.css');
 @import url('../blocks/photo-gallery/__zoom-btn/photo-gallery__zoom-btn.css');

@@ -18,10 +18,14 @@ export class PopupWithForm extends Popup {
     }
 
     setEventListeners() {
-        super.setEventListeners();
-        this._formElement.addEventListener('submit', () => { // Отправить форму и добавить её содержимое на страницу
+        this._formElement.addEventListener('submit', (evt) => {
+            if (evt.target.classList.contains ('popup_opened')) {
+                this.renderLoading (evt.target);
+            } // Отправить форму и добавить её содержимое на страницу
             this._callbackSubmitForm(this._getInputValues());
         });
+
+        super.setEventListeners();
     }
 
     close() {
