@@ -65,8 +65,8 @@ deletePopup.setEventListeners();
 
 
 // Функции, передаваемые в Card
-function handleCardClick(cardname, link) { // Открытие зум-попапа
-  zoomPopupFunc.open(cardname, link);
+function handleCardClick(name, link) { // Открытие зум-попапа
+  zoomPopupFunc.open(name, link);
 }
 
 function deleteCardPopup(cardElement, id) { // Открытие попапа удаления карточки
