@@ -7,8 +7,8 @@ export class UserInfo {
 
     getUserInfo() {
         const data = {}
-        data.username = this._nameValue.textContent;
-        data.job = this._jobValue.textContent;
+        data.name = this._nameValue.textContent;
+        data.about = this._jobValue.textContent;
         return data; // Объект с данными пользователя; подставляется в форму при открытии
     }
 
