@@ -50,6 +50,7 @@ zoomPopupFunc.setEventListeners();
 const deletePopup = new PopupDeleteImage( // экземпляр класса PopupDeleteImage
   {
     callbackSubmitForm: (data, element, id) => { // Функция удаления карточки
+      deletePopup.renderLoadingDel(true); // Лоадер Удаление
       api.deleteCard(data, id) //  Обращаться к api и удалять из вёрстки элемент карточки
         .then((data) => { // Если всё ок
           element.remove(); // Удалить элемент
@@ -58,6 +59,9 @@ const deletePopup = new PopupDeleteImage( // экземпляр класса Pop
         .catch((err) => { // Если не ок
           console.log(err);
         })
+        .finally(() => {
+          deletePopup.renderLoadingDel(false); // убрать лоадер
+        });
     }
   },
   '.delete-popup');
