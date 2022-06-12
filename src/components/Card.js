@@ -1,15 +1,16 @@
 export class Card { // Создаем конструктор с данными карточки и ее template-элементом
-  constructor({ data, handleCardClick, deleteCardPopup, likeCards, dislikeCards }, userId, cardSelector) { // В конструкторе будут динамические данные, для каждого экземпляра свои
+  constructor({ data, userId, handleCardClick, deleteCardPopup, handleLike, handleDislike }, cardSelector) { // В конструкторе будут динамические данные, для каждого экземпляра свои
+    this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
-    this._owner = data.owner;
+    this._owner = data.owner._id;
     this._likes = data.likes;
+    this._userId = userId;
     this._handleCardClick = handleCardClick;
     this._deleteCardPopup = deleteCardPopup;
-    this._likeCards = likeCards;
-    this._dislikeCards = dislikeCards;
-    this._userId = userId;
+    this._handleLike = handleLike;
+    this._handleDislike = handleDislike;
     this._cardSelector = cardSelector; // записали селектор в приватное поле
   }
 
@@ -22,47 +23,43 @@ export class Card { // Создаем конструктор с данными �
     return cardElement; // Вернём DOM-элемент карточки
   }
 
-  generateCard() { // Метод подготовит карточку к публикации
-    this._element = this._getTemplate(); // Запишем разметку в приватное поле _element, так у других элементов появится доступ к ней
-    this._cardImage = this._element.querySelector('.photo-gallery__item');
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
-    this._element.querySelector('.photo-gallery__title').textContent = this._name;
-    this._likeBtn = this._element.querySelector('.photo-gallery__like-btn');
-    this._likeCounter = this._element.querySelector('.photo-gallery__like-counter');
-    this._likeCounter.textContent = this._likes.length;
-
-    if (this._putLike()) { // Поставить лайк
-      this._likeBtn.classList.add('photo-gallery__like-btn-active');
-    }
-
-    this._deleteCardButton = this._element.querySelector('.photo-gallery__delete-btn') // находим корзину
+  _hideTrash() {
     if (this._userId === this._owner._id) { // если айдишник текущего юзера совпадает с айдишником владельца карточки
-      this._deleteCardButton.classList.add('photo-gallery__delete-btn-visible'); // показываем корзину
+      this._deleteCardBtn.classList.add('photo-gallery__delete-btn-visible'); // показываем корзину
     } else {
-      this._deleteCardButton.classList.remove('photo-gallery__delete-btn-visible'); // иначе скрываем корзину
+      this._deleteCardBtn.classList.remove('photo-gallery__delete-btn-visible'); // иначе скрываем корзину
     };
+  }
 
-    this._setEventListeners(); // Добавим обработчики
-    return this._element; // Вернём элемент наружу
+  _checkLikeOwner() {
+    this._likes.forEach((likeOwner) => {
+      if (likeOwner._id === this._userId) {
+        this._likeBtn.classList.add('photo-gallery__like-btn-active');
+      }
+    })
   }
 
   _putLike() {
-    for (let i = 0; i < this._likes.length; i++) {
-      if (this._likes[i]._id === this._userId) {
-        return true;
-      }
-    }
+    this._likeBtn.classList.add('photo-gallery__like-btn-active');
+    this._handleLike(this.data);
+  }
+
+  _removeLike() {
+    this._likeBtn.classList.remove('photo-gallery__like-btn-active');
+    this._handleDislike(this.data);
+  }
+
+  _likesCounter(data) {
+    this._likeCounter.textContent = data.likes.length;
   }
 
   _setEventListeners() {
 
     this._likeBtn.addEventListener('click', () => {
-      this._likeBtn = !this._likeBtn;
-      if (!this._likeBtn) {
-        this._likeCards(this._element, this._id, this._likeCounter);
+      if (this._likeBtn.classList.contains('photo-gallery__like-btn-active')) {
+        this._removeLike(this._data);
       } else {
-        this._dislikeCards(this._element, this._id, this._likeCounter);
+        this._putLike(this._data);
       }
     });
 
@@ -73,6 +70,27 @@ export class Card { // Создаем конструктор с данными �
     this._cardImage.addEventListener('click', () => { // Клик по карточке открывает зумпопап
       this._handleCardClick(this._name, this._link)
     });
+  }
+
+  generateCard() { // Метод подготовит карточку к публикации
+    this._element = this._getTemplate(); // Запишем разметку в приватное поле _element, так у других элементов появится доступ к ней
+    
+    this._cardImage = this._element.querySelector('.photo-gallery__item');
+    this._cardTitle = this._element.querySelector('.photo-gallery__title');
+    this._likeBtn = this._element.querySelector('.photo-gallery__like-btn');
+    this._likeCounter = this._element.querySelector('.photo-gallery__like-counter');
+    this._deleteCardBtn = this._element.querySelector('.photo-gallery__delete-btn');
+
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._cardTitle.textContent = this._name;
+
+    this._hideTrash();
+    this._checkLikeOwner();
+    this._likesCounter(this._data);
+    this._setEventListeners(); // Добавим обработчики
+
+    return this._element; // Вернём элемент наружу
   }
 
 };
