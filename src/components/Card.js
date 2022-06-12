@@ -3,7 +3,7 @@ export class Card { // Создаем конструктор с данными �
     this._data = data;
     this._name = data.name;
     this._link = data.link;
-    this._id = data._id;
+    this._cardId = data._id;
     this._ownerId = data.owner._id;
     this._likes = data.likes;
     this._userId = userId;
@@ -39,12 +39,13 @@ export class Card { // Создаем конструктор с данными �
 
   _putLike() {
     this._likeBtn.classList.add('photo-gallery__like-btn-active');
-    this._handleLike(this.data);
+    this._handleLike((this._element, this._cardId));
+    console.log(this._cardId)
   }
 
   _removeLike() {
     this._likeBtn.classList.remove('photo-gallery__like-btn-active');
-    this._handleDislike(this.data);
+    this._handleDislike(this._element, this._cardId);
   }
 
   _likesCounter(data) {
@@ -62,7 +63,7 @@ export class Card { // Создаем конструктор с данными �
     });
 
     this._deleteCardBtn.addEventListener('click', () => {
-      this._deleteCardPopup(this._element, this._id);
+      this._deleteCardPopup(this._element, this._cardId);
     });
 
     this._cardImage.addEventListener('click', () => { // Клик по карточке открывает зумпопап

@@ -78,23 +78,23 @@ const createNewCard = function creatNewCard(data) {
     deleteCardPopup: (cardElement, id) => {
       deletePopup.open(cardElement, id);
     },
-    handleLike: (cardElement, id) => {
-      api.likeCard(cardElement, id)
-      .then((data) => {
-        card.likesCounter(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
     // handleLike: (cardElement, id) => {
     //   api.likeCard(cardElement, id)
-    //     .then((data) => {
-    //       cardElement.querySelector('.photo-gallery__like-btn').classList.add('photo-gallery__like-btn_active');
-    //       cardElement.querySelector('.photo-gallery__like-counter').textContent = data.likes.length;
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     })
+    //   .then((data) => {
+    //     card.likesCounter(data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   })
+    handleLike: (cardElement, id) => {
+      api.likeCard(cardElement, id)
+        .then((data) => {
+          cardElement.querySelector('.photo-gallery__like-btn').classList.add('photo-gallery__like-btn_active');
+          cardElement.querySelector('.photo-gallery__like-counter').textContent = data.likes.length;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     },
     handleDislike: (cardElement, id) => {
       api.dislikeCard(cardElement, id)
