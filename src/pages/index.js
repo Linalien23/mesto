@@ -71,15 +71,15 @@ deletePopup.setEventListeners();
 
 const createNewCard = function creatNewCard(data) {
   const card = new Card({
-    data,
+    data, userId,
     handleCardClick: (name, link) => {
       functionZoomPopup.open(name, link);
     },
     deleteCardPopup: (cardElement, id) => {
       deletePopup.open(cardElement, id);
     },
-    handleLike: () => {
-      api.likeCard(data)
+    handleLike: (cardElement, id) => {
+      api.likeCard(cardElement, id)
       .then((data) => {
         card.likesCounter(data);
       })
@@ -106,7 +106,7 @@ const createNewCard = function creatNewCard(data) {
           console.log(err);
         })
     }
-  }, userId, '#cards');
+  }, '#cards');
 
   const cardElement = card.generateCard();
   return cardElement;

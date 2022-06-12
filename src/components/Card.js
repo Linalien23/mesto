@@ -4,7 +4,7 @@ export class Card { // Создаем конструктор с данными �
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
-    this._owner = data.owner._id;
+    this._ownerId = data.owner._id;
     this._likes = data.likes;
     this._userId = userId;
     this._handleCardClick = handleCardClick;
@@ -24,11 +24,9 @@ export class Card { // Создаем конструктор с данными �
   }
 
   _hideTrash() {
-    if (this._userId === this._owner._id) { // если айдишник текущего юзера совпадает с айдишником владельца карточки
-      this._deleteCardBtn.classList.add('photo-gallery__delete-btn-visible'); // показываем корзину
-    } else {
-      this._deleteCardBtn.classList.remove('photo-gallery__delete-btn-visible'); // иначе скрываем корзину
-    };
+    if (this._userId !== this._ownerId) { // если айдишник текущего юзера совпадает с айдишником владельца карточки
+      this._deleteCardBtn.remove();
+    }
   }
 
   _checkLikeOwner() {
@@ -63,7 +61,7 @@ export class Card { // Создаем конструктор с данными �
       }
     });
 
-    this._deleteCardButton.addEventListener('click', () => {
+    this._deleteCardBtn.addEventListener('click', () => {
       this._deleteCardPopup(this._element, this._id);
     });
 
@@ -74,7 +72,7 @@ export class Card { // Создаем конструктор с данными �
 
   generateCard() { // Метод подготовит карточку к публикации
     this._element = this._getTemplate(); // Запишем разметку в приватное поле _element, так у других элементов появится доступ к ней
-    
+
     this._cardImage = this._element.querySelector('.photo-gallery__item');
     this._cardTitle = this._element.querySelector('.photo-gallery__title');
     this._likeBtn = this._element.querySelector('.photo-gallery__like-btn');

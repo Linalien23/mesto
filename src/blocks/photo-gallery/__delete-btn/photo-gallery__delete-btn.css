@@ -9,7 +9,6 @@
     background-image: url('../../../Images/Trash.svg');
     cursor: pointer;
     border: none;
-    visibility: hidden;
     opacity: 0;
 }
 
