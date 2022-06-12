@@ -5,6 +5,8 @@
 @import url('../blocks/header/__logo/header__logo.css');
 @import url('../blocks/profile/profile.css');
 @import url('../blocks/profile/__avatar/profile__avatar.css');
+@import url('../blocks/profile/__avatar-btn/profile__avatar-btn.css');
+@import url('../blocks/profile/__avatar-img/profile__avatar-img.css');
 @import url('../blocks/profile/__inner/profile__inner.css');
 @import url('../blocks/profile/__inner-name/profile__inner-name.css');
 @import url('../blocks/profile/__inner-activity/profile__inner-activity.css');

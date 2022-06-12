@@ -15,7 +15,10 @@
     <main class="content">
 
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/ava.jpg')%>" alt="Аватар профиля">
+        <div class="profile__avatar">
+          <button class="profile__avatar-btn" type="button" aria-label="Изменить_аватар"></button>
+          <img class="profile__avatar-img" alt="Аватар пользователя">
+        </div>
         <div class="profile__inner">
           <h1 class="profile__inner-name">Алина Красивская</h1>
           <button class="profile__inner-edit-btn" type="button" aria-label="Редактировать"></button>
@@ -78,8 +81,8 @@
           <input id="name-input" class="popup__input popup__input_type_name" type="text" placeholder="Имя" name="name"
             required minlength="2" maxlength="40">
           <span class="name-input-error popup__texterror popup__texterror_top"></span>
-          <input id="job-input" class="popup__input popup__input_type_job" type="text" placeholder="О себе"
-            name="about" required minlength="2" maxlength="200">
+          <input id="job-input" class="popup__input popup__input_type_job" type="text" placeholder="О себе" name="about"
+            required minlength="2" maxlength="200">
           <span class="job-input-error popup__texterror popup__texterror_bottom"></span>
           <button class="popup__submit-btn edit-popup__submit-btn" type="submit">Cохранить</button>
         </form>
@@ -89,15 +92,16 @@
 
     <section class="popup edit-avatar-popup">
       <div class="popup__container edit-avatar-popup__container">
-            <form class="popup__form edit-avatar-popup__form" name="edit-avatar" novalidate>
-                <h3 class="popup__title">Обновить аватар</h3>
-                <input id="url-input-avatar" class="popup__input popup__input_type_url" type="url" name="avatar" placeholder="Ссылка на аватар" required>
-                <span class="url-input-avatar-error popup__texterror edit-avatar-popup__texterror"></span>
-                <button class="popup__submit-btn edit-avatar-popup__submit-btn" type="submit">Сохранить</button>
-            </form>
-            <button class="popup__close-btn edit-avatar-popup__close-btn" type="button" aria-label="Закрыть"></button>
-     </div>
-</section>
+        <form class="popup__form edit-avatar-popup__form" name="edit-avatar" novalidate>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <input id="url-input-avatar" class="popup__input popup__input_type_url" type="url" name="avatar"
+            placeholder="Ссылка на аватар" required>
+          <span class="url-input-avatar-error popup__texterror edit-avatar-popup__texterror"></span>
+          <button class="popup__submit-btn edit-avatar-popup__submit-btn" type="submit">Сохранить</button>
+        </form>
+        <button class="popup__close-btn edit-avatar-popup__close-btn" type="button" aria-label="Закрыть"></button>
+      </div>
+    </section>
 
     <section class="popup add-popup">
       <div class="popup__container">
@@ -125,13 +129,13 @@
 
     <section class="popup delete-popup">
       <div class="delete-popup__container">
-          <button class="popup__close-btn delete-popup__close-btn" type="button" aria-label="Закрыть"></button>
-          <form class="popup__form delete-popup__form" name="delete" novalidate>
-              <h3 class="popup__title">Вы уверены?</h3>
-              <button class="popup__submit-btn delete-popup__submit-btn" type="submit">Да</button>
-          </form>
+        <button class="popup__close-btn delete-popup__close-btn" type="button" aria-label="Закрыть"></button>
+        <form class="popup__form delete-popup__form" name="delete" novalidate>
+          <h3 class="popup__title">Вы уверены?</h3>
+          <button class="popup__submit-btn delete-popup__submit-btn" type="submit">Да</button>
+        </form>
       </div>
-  </section>
+    </section>
 
     <template id="cards">
       <li class="photo-gallery__card">
@@ -148,4 +152,5 @@
     </template>
 
   </body>
+
 </html>

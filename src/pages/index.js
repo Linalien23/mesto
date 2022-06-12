@@ -153,7 +153,7 @@ buttonEdit.addEventListener('click', () => {
 
 const editAvatarPopup = new PopupWithForm(
   {
-    callbackSubmit: (data) => {
+    callbackSubmitForm: (data) => {
       editAvatarPopup.renderLoading(true);
       api.updateUserAvatar(data)
         .then((data) => {
@@ -169,6 +169,11 @@ const editAvatarPopup = new PopupWithForm(
     }
   }, '.edit-avatar-popup');
 editAvatarPopup.setEventListeners();
+
+document.querySelector('.profile__avatar-btn').addEventListener('click', () => {
+  editAvatarValidate.resetValidation();
+  editAvatarPopup.open();
+});
 
 // Валидация формы редактирования аватара
 const editAvatarValidate = new FormValidator(formElementList, formElementEditAvatar);
