@@ -9,7 +9,6 @@
     background-image: url('../../../Images/Trash.svg');
     cursor: pointer;
     border: none;
-    opacity: 0;
 }
 
 .photo-gallery__delete-btn:hover {
