@@ -15,13 +15,12 @@ export class Popup {
 
     _handleEscClose = (evt) => { // Метод закрытия попапа по кнопке Escape
         if (evt.key === 'Escape') { //если пользователь нажал Escape
-            const popupOpened = document.querySelector('.popup_opened');
-            this.close(popupOpened); //вызов функции закрытия попапа
+            this.close(); //вызов функции закрытия попапа
         }
     };
 
     setEventListeners() {
-        this._popup.addEventListener('click', (evt) => {
+        this._popup.addEventListener('mousedown', (evt) => {
             if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close-btn')) { 
                 this.close();
             }

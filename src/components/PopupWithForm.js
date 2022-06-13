@@ -19,9 +19,8 @@ export class PopupWithForm extends Popup {
 
     setEventListeners() {
         this._formElement.addEventListener('submit', (evt) => {
-            if (evt.target.classList.contains ('popup_opened')) {
-                this.renderLoading (evt.target);
-            } // Отправить форму и добавить её содержимое на страницу
+            this.renderLoading(true);
+            // Отправить форму и добавить её содержимое на страницу
             this._callbackSubmitForm(this._getInputValues());
         });
 

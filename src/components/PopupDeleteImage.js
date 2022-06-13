@@ -20,9 +20,8 @@ export class PopupDeleteImage extends Popup {
 
     setEventListeners() {
         this._formElement.addEventListener('submit', (evt) => {
-            if (evt.target.classList.contains('popup_opened')) {
-                this.renderLoadingDel(evt.target);
-            }
+            this.renderLoadingDel(true);
+
             evt.preventDefault();
             this._callbackSubmitForm(this._data, this._element, this._element_id);
         });

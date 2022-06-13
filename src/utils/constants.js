@@ -9,7 +9,7 @@ export const profileAvatar = document.querySelector ('.profile__avatar');
 export const userData = {
     nameValueSelector: '.profile__inner-name',
     jobValueSelector: '.profile__inner-activity',
-    avatarSelector: '.profile__avatar'
+    avatarSelector: '.profile__avatar-img'
 }
 
 export const formElementList = {
