@@ -17,7 +17,7 @@ export class Popup {
         if (evt.key === 'Escape') { //если пользователь нажал Escape
             this.close(); //вызов функции закрытия попапа
         }
-    };
+    }; // ПРИВЕТ! Я ПОПРАВИЛА ТУТ, НО В ПРОШЛЫЙ РАЗ ЗАБЫЛА ЗАПУШИТЬ ПЕРЕД ОТПРАВКОЙ НА ПРОВЕРКУ, СОРРИ! =)
 
     setEventListeners() {
         this._popup.addEventListener('mousedown', (evt) => {
