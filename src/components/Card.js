@@ -38,17 +38,22 @@ export class Card { // Создаем конструктор с данными �
   }
 
   _putLike() {
-    this._likeBtn.classList.add('photo-gallery__like-btn_active');
     this._handleLike(this._element, this._cardId);
-    console.log(this._cardId)
   }
 
-  _removeLike() {
-    this._likeBtn.classList.remove('photo-gallery__like-btn_active');
+  addLike() {
+    this._likeBtn.classList.add('photo-gallery__like-btn_active');
+  }
+
+  _disLike() {
     this._handleDislike(this._element, this._cardId);
   }
 
-  likesCounter(data) {
+  removeLike() {
+    this._likeBtn.classList.remove('photo-gallery__like-btn_active');
+  }
+
+  updateLikes(data) {
     this._likeCounter.textContent = data.likes.length;
   }
 
@@ -56,7 +61,7 @@ export class Card { // Создаем конструктор с данными �
 
     this._likeBtn.addEventListener('click', () => {
       if (this._likeBtn.classList.contains('photo-gallery__like-btn_active')) {
-        this._removeLike();
+        this._disLike();
       } else {
         this._putLike();
       }
@@ -86,7 +91,7 @@ export class Card { // Создаем конструктор с данными �
 
     this._hideTrash();
     this._checkLikeOwner();
-    this.likesCounter(this._data);
+    this.updateLikes(this._data);
     this._setEventListeners(); // Добавим обработчики
 
     return this._element; // Вернём элемент наружу

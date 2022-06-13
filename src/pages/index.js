@@ -80,17 +80,19 @@ const createNewCard = function creatNewCard(data) {
     },
     handleLike: (cardElement, id) => {
       api.likeCard(cardElement, id)
-      .then((data) => {
-        card.likesCounter(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+        .then((data) => {
+          card.updateLikes(data);
+          card.addLike();
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     },
     handleDislike: (cardElement, id) => {
       api.dislikeCard(cardElement, id)
         .then((data) => {
-          card.likesCounter(data);
+          card.updateLikes(data);
+          card.removeLike();
         })
         .catch((err) => {
           console.log(err);
@@ -154,7 +156,7 @@ const editAvatarPopup = new PopupWithForm(
       editAvatarPopup.renderLoading(true);
       api.updateUserAvatar(data)
         .then((data) => {
-          document.querySelector(userData.avatarSelector).src = data.avatar;
+          createUserInfo.setUserInfo(data); 
           editAvatarPopup.close();
         })
         .catch((err) => {
